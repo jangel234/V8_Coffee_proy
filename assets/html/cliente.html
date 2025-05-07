@@ -4,44 +4,49 @@
   <meta charset="UTF-8">
   <title>v8ocho – Clientes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Tailwind + Font & Icons -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/V8_Coffee_proy/assets/css/clientes.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-poppins bg-[#FFF5E1] text-[#6B4423]">
+<body class="body">
   <!-- Header -->
-  <header class="bg-[#6B4423] text-white p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">v8ocho Café</h1>
-    <nav class="space-x-4">
-      <a href="clients.html" class="underline">Clientes</a>
-      <a href="menu.html" class="hover:underline">Menú</a>
-      <a href="admin.html" class="hover:underline">Admin</a>
+  <header class="header">
+    <h1 class="title">v8ocho Café</h1>
+    <nav class="nav">
+      <a href="clients.html" class="nav-link active">Clientes</a>
+      <a href="menu.html" class="nav-link">Menú</a>
+      <a href="admin.html" class="nav-link">Admin</a>
     </nav>
   </header>
 
-  <main class="container mx-auto p-6">
-    <h2 class="text-2xl font-semibold mb-4">Buscar o Registrar Cliente</h2>
-    <div class="bg-white rounded-2xl shadow p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <main class="main">
+    <h2 class="section-title">Buscar o Registrar Cliente</h2>
+    <div class="card">
       <!-- Buscar Cliente -->
-      <div>
-        <h3 class="font-medium mb-2">Buscar Cliente</h3>
-        <div class="flex">
-          <input type="text" placeholder="Nombre o correo" class="flex-1 border border-gray-300 rounded-l-lg p-2 focus:outline-none"/>
-          <button class="bg-[#D2691E] px-4 rounded-r-lg text-white"><!-- Heroicon search -->🔍</button>
+      <div class="section">
+        <h3 class="section-subtitle">Buscar Cliente</h3>
+        <div class="search-group">
+          <input type="text" placeholder="Nombre o correo" class="input search-input" id="searchString"/>
+          <button class="btn search-btn" id="btn_search">🔍</button>
+        </div>
+        <div>
+          <ul id="lista_clientes">
+            <!--Listado de clientes-->
+          </ul>
         </div>
       </div>
       <!-- Registrar Cliente -->
-      <div>
-        <h3 class="font-medium mb-2">Registrar Cliente Nuevo</h3>
-        <form class="space-y-3">
-          <input type="text" placeholder="Nombre completo" class="w-full border border-gray-300 rounded-lg p-2"/>
-          <input type="email" placeholder="Correo electrónico" class="w-full border border-gray-300 rounded-lg p-2"/>
-          <button type="submit" class="w-full bg-[#6B4423] py-2 rounded-full text-white">Guardar Cliente</button>
+      <div class="section">
+        <h3 class="section-subtitle">Registrar Cliente Nuevo</h3>
+        <form class="form">
+          <input type="text" placeholder="Nombre completo" class="input" id="inp_nombre"/>
+          <input type="email" placeholder="Correo electrónico" class="input" id="inp_email"/>
+          <button type="submit" class="btn submit-btn" id="btn_guardar">Guardar Cliente</button>
         </form>
       </div>
     </div>
   </main>
 
-  <footer class="text-center text-sm p-4">© 2025 v8ocho Café</footer>
+  <footer class="footer">© 2025 v8ocho Café</footer>
+  <script src="/V8_Coffee_proy/assets/js/cliente.js"></script>
 </body>
 </html>
