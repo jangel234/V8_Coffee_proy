@@ -1,0 +1,26 @@
+{
+  "name": "v8_coffee_proy",
+  "version": "1.0.0",
+  "description": "Is a proyect to 3rd partial of 'Programacion para web'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jangel234/V8_Coffee_proy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jangel234/V8_Coffee_proy/issues"
+  },
+  "homepage": "https://github.com/jangel234/V8_Coffee_proy#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  }
+}
