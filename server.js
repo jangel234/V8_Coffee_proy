@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'angxd.com', // your password
+  password: 'change', // your password
   database: 'V8Coffee' // name of your database
 });
 
@@ -79,14 +79,17 @@ app.post('/clients', (req, res) => {
     return res.status(400).json({ error: 'No llego el nombre del cliente' });
   }
 
+  const query = "SELECT * FROM Cliente WHERE nombre LIKE ?";
+  const valor = `${nombre}%`;
+
   connection.query(
-    'SELECT * FROM Cliente WHERE nombre LIKE  "?%" ',
-    [nombre],
+    query,
+    [valor],
     (error, results) => {
       if (error) return res.status(500).json({ error: error.message });
 
       if (results.length === 0) {
-        return res.status(401).json({ error: 'Credenciales inválidas' });
+        return res.status(201).json({ error: 'No se encontraron usuarios con:' + nombre });
       }
 
       const clients = results[0];
