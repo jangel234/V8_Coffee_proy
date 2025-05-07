@@ -31,17 +31,17 @@ connection.connect(error => {
 
 //obtener usuarios
 //en desuso
-app.get('/users', (req, res) => {
-  connection.query('SELECT nombre FROM users', (error, results) => {
-    if (error) {
-      res.status(500).json({ error: error.message });
-      return;
-    }
-    res.json(results);
-  });
-});
+// app.get('/users', (req, res) => {
+//   connection.query('SELECT nombre FROM users', (error, results) => {
+//     if (error) {
+//       res.status(500).json({ error: error.message });
+//       return;
+//     }
+//     res.json(results);
+//   });
+// });
 
-//login
+
 app.post('/login', (req, res) => {
   const { usuario, telefono } = req.body;
 
@@ -66,6 +66,32 @@ app.post('/login', (req, res) => {
         message: 'Login exitoso',
         user
       });
+    }
+  );
+});
+
+
+//login
+app.post('/clients', (req, res) => {
+  const { nombre } = req.body;
+
+  if (!nombre) {
+    return res.status(400).json({ error: 'No llego el nombre del cliente' });
+  }
+
+  connection.query(
+    'SELECT * FROM Cliente WHERE nombre LIKE  "?%" ',
+    [nombre],
+    (error, results) => {
+      if (error) return res.status(500).json({ error: error.message });
+
+      if (results.length === 0) {
+        return res.status(401).json({ error: 'Credenciales inválidas' });
+      }
+
+      const clients = results[0];
+
+      res.json({clients});
     }
   );
 });
