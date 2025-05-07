@@ -4,35 +4,26 @@
   <meta charset="UTF-8">
   <title>v8ocho – Pago</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/V8_Coffee_proy/assets/css/pago.css">
 </head>
-<body class="font-poppins bg-[#FFF5E1] text-[#6B4423]">
-  <header class="bg-[#6B4423] text-white p-4 text-center">
-    <h1 class="text-2xl font-bold">Selecciona el pago</h1>
+<body class="payment-page">
+  <header class="page-header">
+    <h1 class="page-header__title">Selecciona el pago</h1>
   </header>
 
-  <main class="container mx-auto p-6 max-w-md">
-    <div class="bg-white rounded-2xl shadow-lg p-6 space-y-6">
-      <fieldset class="space-y-3">
-        <legend class="font-medium">Paga con:</legend>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="payment" value="tarjeta"/>
-          Tarjeta de crédito
-        </label>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="payment" value="efectivo"/>
-          Efectivo
-        </label>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="payment" value="paypal"/>
-          PayPal
-        </label>
+  <main class="main-content">
+    <form class="form-stack">
+      <fieldset class="fieldset">
+        <legend class="fieldset__title">Paga con:</legend>
+        <label class="option"><input type="radio" name="payment" value="tarjeta"> Tarjeta de crédito</label>
+        <label class="option"><input type="radio" name="payment" value="efectivo"> Efectivo</label>
+        <label class="option"><input type="radio" name="payment" value="paypal"> PayPal</label>
       </fieldset>
-      <a href="ticket.html" class="block text-center bg-[#6B4423] text-white py-3 rounded-full">Confirmar Pago</a>
-    </div>
+      <a href="ticket.html" class="btn btn--primary btn--block">Confirmar Pago</a>
+    </form>
   </main>
 
-  <footer class="text-center text-sm p-4">© 2025 v8ocho Café</footer>
+  <footer class="site-footer">© 2025 v8ocho Café</footer>
 </body>
 </html>

@@ -4,60 +4,60 @@
   <meta charset="UTF-8">
   <title>v8ocho – Extras & Tamaño</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/V8_Coffee_proy/assets/css/extras.css">
 </head>
-<body class="font-poppins bg-[#FFF5E1] text-[#6B4423]">
-  <header class="bg-[#6B4423] text-white p-4 text-center">
-    <h1 class="text-2xl font-bold">Personaliza tu bebida</h1>
+<body class="extras-page">
+  <header class="page-header">
+    <h1 class="page-header__title">Personaliza tu bebida</h1>
   </header>
 
-  <main class="container mx-auto p-6 max-w-lg">
-    <div class="bg-white rounded-2xl shadow-lg p-6 space-y-6">
-      <!-- Tamaño -->
-      <div>
-        <h2 class="font-medium mb-2">Elige un tamaño</h2>
-        <div class="flex gap-4">
-          <label class="flex-1 text-center p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="radio" name="size" value="grande" class="hidden"/>
-            <div>Grande<br/><span class="font-bold">$60</span></div>
+  <main class="main-content">
+    <div class="card">
+      <!-- Tamaños -->
+      <div class="option-group">
+        <h2 class="option-group__title">Elige un tamaño</h2>
+        <div class="options options--horizontal">
+          <label class="option">
+            <input type="radio" name="size" value="grande">
+            <span>Grande – $60</span>
           </label>
-          <label class="flex-1 text-center p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="radio" name="size" value="mediana" class="hidden"/>
-            <div>Mediana<br/><span class="font-bold">$50</span></div>
+          <label class="option">
+            <input type="radio" name="size" value="mediana">
+            <span>Mediana – $50</span>
           </label>
-          <label class="flex-1 text-center p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="radio" name="size" value="chica" class="hidden"/>
-            <div>Chica<br/><span class="font-bold">$40</span></div>
+          <label class="option">
+            <input type="radio" name="size" value="chica">
+            <span>Chica – $40</span>
           </label>
         </div>
       </div>
       <!-- Extras -->
-      <div>
-        <h2 class="font-medium mb-2">Añade extras</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <label class="flex items-center space-x-2 p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="checkbox" name="extras" value="Malvaviscos"/>
-            Malvaviscos
+      <div class="option-group">
+        <h2 class="option-group__title">Añade extras</h2>
+        <div class="options options--grid">
+          <label class="option">
+            <input type="checkbox" name="extras" value="Malvaviscos">
+            <span>Malvaviscos</span>
           </label>
-          <label class="flex items-center space-x-2 p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="checkbox" name="extras" value="Chocolate"/>
-            Chocolate
+          <label class="option">
+            <input type="checkbox" name="extras" value="Chocolate">
+            <span>Chocolate</span>
           </label>
-          <label class="flex items-center space-x-2 p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="checkbox" name="extras" value="Caramelo"/>
-            Caramelo
+          <label class="option">
+            <input type="checkbox" name="extras" value="Caramelo">
+            <span>Caramelo</span>
           </label>
-          <label class="flex items-center space-x-2 p-3 border rounded-xl hover:bg-[#EEE] cursor-pointer">
-            <input type="checkbox" name="extras" value="Crema Batida"/>
-            Crema Batida
+          <label class="option">
+            <input type="checkbox" name="extras" value="Crema Batida">
+            <span>Crema Batida</span>
           </label>
         </div>
       </div>
-      <a href="payment.html" class="block text-center bg-[#D2691E] text-white py-3 rounded-full">Continuar al Pago</a>
+      <a href="payment.html" class="btn btn--primary btn--block">Continuar al Pago</a>
     </div>
   </main>
 
-  <footer class="text-center text-sm p-4">© 2025 v8ocho Café</footer>
+  <footer class="site-footer">© 2025 v8ocho Café</footer>
 </body>
 </html>

@@ -4,50 +4,36 @@
   <meta charset="UTF-8">
   <title>v8ocho – Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/V8_Coffee_proy/assets/css/administrados.css">
 </head>
-<body class="font-poppins bg-[#F0EAD6] text-[#6B4423]">
-  <header class="bg-[#6B4423] text-white p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">Panel Admin</h1>
-    <a href="menu.html" class="underline">Volver al Menú</a>
+<body class="admin-page">
+  <header class="site-header">
+    <h1 class="site-header__title">Panel Admin</h1>
+    <a href="menu.html" class="site-nav__link">Volver al Menú</a>
   </header>
 
-  <main class="container mx-auto p-6">
-    <h2 class="text-xl font-semibold mb-4">Pedidos Pendientes</h2>
-    <div class="overflow-x-auto">
-      <table class="min-w-full bg-white rounded-2xl shadow-lg overflow-hidden">
-        <thead class="bg-[#D2691E] text-white">
+  <main class="main-content">
+    <h2 class="section-title">Pedidos Pendientes</h2>
+    <div class="table-wrap">
+      <table class="orders-table">
+        <thead>
           <tr>
-            <th class="p-3">ID</th>
-            <th class="p-3">Cliente</th>
-            <th class="p-3">Bebida</th>
-            <th class="p-3">Tamaño</th>
-            <th class="p-3">Extras</th>
-            <th class="p-3">Total</th>
-            <th class="p-3">Estado</th>
-            <th class="p-3">Acción</th>
+            <th>ID</th><th>Cliente</th><th>Bebida</th><th>Tamaño</th><th>Extras</th><th>Total</th><th>Estado</th><th>Acción</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="text-center border-t">
-            <td class="p-3">001</td>
-            <td class="p-3">María López</td>
-            <td class="p-3">Latte</td>
-            <td class="p-3">Grande</td>
-            <td class="p-3">Chocolate</td>
-            <td class="p-3">$60</td>
-            <td class="p-3 font-semibold text-[#D2691E]">En espera</td>
-            <td class="p-3">
-              <button class="px-3 py-1 bg-[#6B4423] text-white rounded-full">Completar</button>
-            </td>
+          <tr>
+            <td>001</td><td>María López</td><td>Latte</td><td>Grande</td><td>Chocolate</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
           </tr>
-          <!-- Más filas dinámicas según pedidos -->
+          <!-- Más filas -->
         </tbody>
       </table>
     </div>
   </main>
 
-  <footer class="text-center text-sm p-4">© 2025 v8ocho Café</footer>
+  <footer class="site-footer">© 2025 v8ocho Café</footer>
 </body>
 </html>

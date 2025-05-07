@@ -89,12 +89,10 @@ body {
   }
   
   .search-btn {
-    background-color: #D2691E;
+
     color: white;
     padding: 0 1rem;
     border: none;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
     cursor: pointer;
   }
   

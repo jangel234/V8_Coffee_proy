@@ -4,29 +4,29 @@
   <meta charset="UTF-8">
   <title>v8ocho – Ticket</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/V8_Coffee_proy/assets/css/ticket.css">
 </head>
-<body class="font-poppins bg-[#FFF5E1] text-[#6B4423]">
-  <header class="bg-[#6B4423] text-white p-4 text-center">
-    <h1 class="text-2xl font-bold">Tu pedido está listo</h1>
+<body class="ticket-page">
+  <header class="page-header">
+    <h1 class="page-header__title">Tu pedido está listo</h1>
   </header>
 
-  <main class="container mx-auto p-6 max-w-sm">
-    <div class="bg-white rounded-2xl shadow-lg p-6 space-y-4">
-      <h2 class="font-medium text-lg">Pedido #001</h2>
-      <ul class="space-y-2">
-        <li>Latte Grande<br/><span class="text-sm text-gray-600">+ Chocolate, Crema Batida</span></li>
+  <main class="main-content">
+    <div class="card">
+      <h2 class="card__subtitle">Pedido #001</h2>
+      <ul class="order-list">
+        <li>Latte Grande<br><span class="order-list__extra">+ Chocolate, Crema Batida</span></li>
         <li>Cold Brew Mediano</li>
       </ul>
-      <div class="flex justify-between font-bold text-lg pt-4 border-t">
+      <div class="order-total">
         <span>Total</span><span>$110</span>
       </div>
-      <button onclick="window.print()" class="w-full mt-4 bg-[#D2691E] text-white py-2 rounded-full">Imprimir Ticket</button>
-      <a href="menu.html" class="block text-center mt-2 text-[#6B4423] underline">Volver al Menú</a>
+      <button onclick="window.print()" class="btn btn--primary btn--block">Imprimir Ticket</button>
+      <a href="menu.html" class="link-back">Volver al Menú</a>
     </div>
   </main>
 
-  <footer class="text-center text-sm p-4">© 2025 v8ocho Café</footer>
+  <footer class="site-footer">© 2025 v8ocho Café</footer>
 </body>
 </html>

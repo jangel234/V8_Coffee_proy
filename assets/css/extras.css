@@ -1,0 +1,91 @@
+/* extras.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body.extras-page {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFF5E1;
+  color: #6B4423;
+}
+
+.page-header {
+  background-color: #6B4423;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.page-header__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.main-content {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.option-group__title {
+  margin: 0 0 .5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+}
+
+.options--horizontal {
+  justify-content: space-between;
+}
+
+.options--grid {
+  flex-wrap: wrap;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: .75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: .75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option input {
+  margin-right: .5rem;
+}
+
+.btn--primary {
+  background-color: #D2691E;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn--block {
+  display: block;
+  text-align: center;
+  padding: .75rem;
+  border-radius: 9999px;
+  margin-top: 1rem;
+}
+
+.site-footer {
+  text-align: center;
+  font-size: .875rem;
+  padding: 1rem;
+}

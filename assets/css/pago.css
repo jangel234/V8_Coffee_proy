@@ -1,0 +1,75 @@
+/* payment.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body.payment-page {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FFF5E1;
+  color: #6B4423;
+}
+
+.page-header {
+  background-color: #6B4423;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.page-header__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.main-content {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+}
+
+.fieldset__title {
+  margin: 0 0 .5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background-color: #6B4423;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn--block {
+  display: block;
+  text-align: center;
+  padding: .75rem;
+  border-radius: 9999px;
+}
+ 
+.site-footer {
+  text-align: center;
+  font-size: .875rem;
+  padding: 1rem;
+}
