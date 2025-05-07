@@ -4,7 +4,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const usuario = document.getElementById("username").value.trim();
     const telefono = document.getElementById("telephone").value.trim();
 
-    console.log(so)
     if (!usuario || !telefono) {
         alert('Por favor rellene los campos');
         return;

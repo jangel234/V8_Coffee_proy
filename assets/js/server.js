@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
   const { usuario, telefono } = req.body;
 
   if (!usuario || !telefono) {
-    return res.status(400).json({ error: 'Usuario y contraseña requeridos' });
+    return res.status(400).json({ error: 'Usuario y telefono requeridos' });
   }
 
   connection.query(
