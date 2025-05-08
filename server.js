@@ -92,7 +92,7 @@ app.post('/clients', (req, res) => {
         return res.status(204).json({ error: 'No se encontraron usuarios con: ' + nombre });
       }
 
-      const clients = results[0];
+      const clients = results;
 
       res.json({clients});
     }
