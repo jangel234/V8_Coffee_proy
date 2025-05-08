@@ -22,22 +22,13 @@
   </div>
 
   <main class="main-content">
-    <div class="tabs">
-      <button class="tab tab--active">Calientes</button>
-      <button class="tab">Frías</button>
+    <div class="categorias">
+      <button id="btnCalientes" class="btn-calientes">Calientes</button>
+      <button id="btnFrias" class="btn-frias">Frías</button>
     </div>
-    <div class="card-grid">
-      <!-- Repetir para cada bebida -->
-      <div class="card">
-        <img src="https://source.unsplash.com/400x300/?espresso" alt="Espresso" class="card__img">
-        <div class="card__body">
-          <h3 class="card__title">Espresso</h3>
-          <p class="card__subtitle">Clásico intenso.</p>
-          <a href="extras.html?drink=Espresso" class="btn btn--primary">Seleccionar</a>
-        </div>
-      </div>
-      <!-- … hasta 10 cards -->
-    </div>
+    
+    <div class="grid-bebidas" id="gridBebidas"></div>
+
   </main>
 
   <footer class="site-footer">© 2025 v8ocho Café</footer>

@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'angxd.com', // your password
+  password: 'change', // your password
   database: 'V8Coffee' // name of your database
 });
 
@@ -92,7 +92,7 @@ app.post('/clients', (req, res) => {
         return res.status(204).json({ error: 'No se encontraron usuarios con: ' + nombre });
       }
 
-      const clients = results[0];
+      const clients = results;
 
       res.json({clients});
     }
