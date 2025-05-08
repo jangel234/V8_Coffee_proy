@@ -60,7 +60,8 @@ CREATE TABLE PP (
 -- Registros base
 INSERT INTO Cliente (nombre, telefono) VALUES
 ('Juan Perez', '3121234567'),
-('Maria Gomez', '3121234568');
+('Maria Gomez', '3121234568'),
+('Julian Juarez', '3122936134');
 
 INSERT INTO Usuarios (nombre, telefono, rol) VALUES
 ('Carlos Ruiz', '3121234568', 'Encargado'),

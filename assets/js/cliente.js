@@ -3,8 +3,10 @@ const btnBusqueda = document.getElementById('btn_search');
 const nombreUsuario = document.getElementById('inp_nombre').value;
 const emailUsuario = document.getElementById('inp_email').value;
 const btnGuardar = document.getElementById('btn_guardar');
+const listaClientes = document.getElementById('lista_clientes');
 
-cadenaBusqueda.addEventListener('change', async function() {
+//Busqueda
+cadenaBusqueda.addEventListener('input', async function() {
     let nombre = cadenaBusqueda.value;
 
     console.log(nombre);
@@ -22,6 +24,16 @@ cadenaBusqueda.addEventListener('change', async function() {
 
         console.log(data);
 
+        //creacion de la lista de clientes
+        data => {data.forEach(cliente => {
+                let elementoLista = document.createElement('li');
+                let nombre = document.createElement('a');
+                nombre.textContent = cliente.nombre;
+                nombre.href = './V8_Coffe_proy/assets/html/menu.html';
+                elementoLista.appendChild(nombre);
+                listaClientes.appendChild(elementoLista);
+            });
+        }
     } catch (error) {
         alert(error.message);
     }
