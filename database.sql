@@ -78,7 +78,14 @@ INSERT INTO Insumos (nombre, costo) VALUES
 
 INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 ('Cappuccino Clásico', 'Preparado con doble shot de espresso', 'Mediano', 1, 45.00),
-('Mocha Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 1, 55.00);
+('Mocha Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 1, 55.00),
+('Café Americano', 'Preparado con agua caliente y espresso', 'Mediano', 0, 35.00),
+('Café Latte', 'Preparado con leche vaporizada y espresso', 'Grande', 1, 50.00),
+('Café Frappé', 'Preparado con hielo y café', 'Grande', 0, 60.00),
+('Café Helado', 'Preparado con hielo y café', 'Mediano', 0, 40.00),
+('Matcha latte', 'Preparado con chocolate y espresso', 'Mediano', 1, 50.00),
+('Moka Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 0, 55.00);
+
 
 INSERT INTO PI (id_Producto, id_Insumo, subtotal) VALUES
 (1, 1, 15.50),
