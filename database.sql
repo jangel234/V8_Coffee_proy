@@ -26,7 +26,7 @@ CREATE TABLE Productos (
     nombre varchar(100) NOT NULL,
     procedimientos text,
     tamanio varchar(50),
-    HC int,
+    HC boolean, -- Frio = 0 // Caliente = 1
     precio decimal(10,2) NOT NULL
 );
 
@@ -76,8 +76,8 @@ INSERT INTO Insumos (nombre, costo) VALUES
 ('Chocolate en polvo', 8.75);
 
 INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
-('Cappuccino Clásico', 'Preparado con doble shot de espresso', 'Mediano', 250, 45.00),
-('Mocha Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 320, 55.00);
+('Cappuccino Clásico', 'Preparado con doble shot de espresso', 'Mediano', 1, 45.00),
+('Mocha Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 1, 55.00);
 
 INSERT INTO PI (id_Producto, id_Insumo, subtotal) VALUES
 (1, 1, 15.50),
