@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'change', // your password
+  password: 'angxd.com', // your password
   database: 'V8Coffee' // name of your database
 });
 
@@ -41,7 +41,7 @@ connection.connect(error => {
 //   });
 // });
 
-
+// login
 app.post('/login', (req, res) => {
   const { usuario, telefono } = req.body;
 
@@ -71,7 +71,7 @@ app.post('/login', (req, res) => {
 });
 
 
-//login
+// busequeda de clientes  --    nombre LIKE nombre%
 app.post('/clients', (req, res) => {
   const { nombre } = req.body;
 
@@ -89,7 +89,7 @@ app.post('/clients', (req, res) => {
       if (error) return res.status(500).json({ error: error.message });
 
       if (results.length === 0) {
-        return res.status(201).json({ error: 'No se encontraron usuarios con:' + nombre });
+        return res.status(204).json({ error: 'No se encontraron usuarios con: ' + nombre });
       }
 
       const clients = results[0];
@@ -99,6 +99,8 @@ app.post('/clients', (req, res) => {
   );
 });
 
+
+//
 
 // Iniciar servidor
 app.listen(3000, () => {

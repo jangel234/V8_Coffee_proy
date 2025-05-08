@@ -1,6 +1,6 @@
 body {
     font-family: 'Courier New', Courier, monospace;
-    background-color: #f4f4f4;
+    background-color: #FFF5E1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@ body {
 }
 
 .login-container {
-    background-color: #fff;
+    background-color: #f4daa7;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -33,14 +33,14 @@ h2 {
 .input-group input {
     width: 95%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffaa00;
     border-radius: 4px;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #D2691E;
+    background-color: #fc8a3a;
     color: white;
     border: none;
     border-radius: 4px;
@@ -49,15 +49,5 @@ button {
 
 button:hover {
     color: #000;
-    background-color: #00000025;
-}
-
-#newRegister {
-    margin-left: 64%;
-    text-decoration: none;
-    color: #000000;
-}
-
-#newRegister:hover {
-    color: #00000058;
+    background-color: rgba(255, 128, 37, 0.518);
 }

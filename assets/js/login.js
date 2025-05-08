@@ -20,8 +20,13 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         if (!response.ok) throw new Error(data.error || 'Error en el login');
 
-
-        console.log(data);
+        if (data.user.rol === 'Barista') {
+            // Aqui va a donde se dirigira si es barista
+            console.log('Hazme un cafe wey');
+        } else if (data.user.rol === 'Encargado') {
+            // Aqui va a donde se dirigira si es Encargado
+            console.log('Pinche jefe wey');
+        }
 
     } catch (error) {
         alert(error.message);
