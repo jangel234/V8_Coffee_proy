@@ -88,18 +88,6 @@ body {
     border-bottom-right-radius: 0;
   }
   
-  .search-btn {
-<<<<<<< HEAD
-
-=======
-    background-color: white;
->>>>>>> 654b59cc33adda4d02efb5644e2c2ac70d44dd8e
-    color: white;
-    padding: 0 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  
   .form {
     display: flex;
     flex-direction: column;

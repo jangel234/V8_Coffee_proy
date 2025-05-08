@@ -1,5 +1,4 @@
 const cadenaBusqueda = document.getElementById('searchString');
-const btnBusqueda = document.getElementById('btn_search');
 const nombreUsuario = document.getElementById('inp_nombre').value;
 const emailUsuario = document.getElementById('inp_email').value;
 const btnGuardar = document.getElementById('btn_guardar');
@@ -24,17 +23,32 @@ cadenaBusqueda.addEventListener('input', async function() {
 
         console.log(data);
 
-        //creacion de la lista de clientes
-        data => {data.forEach(cliente => {
-                let elementoLista = document.createElement('li');
-                let nombre = document.createElement('a');
-                nombre.textContent = cliente.nombre;
-                nombre.href = './V8_Coffe_proy/assets/html/menu.html';
-                elementoLista.appendChild(nombre);
-                listaClientes.appendChild(elementoLista);
-            });
+         //creacion de la lista de clientes
+
+        // Limpiar la lista actual
+        listaClientes.innerHTML = '';
+
+        // Verificar que haya resultados
+        if (data.length === 0) {
+            const li = document.createElement('li');
+            li.textContent = 'No se encontraron clientes.';
+            listaClientes.appendChild(li);
+            return;
         }
+
+        // Agregar cada cliente a la lista
+        data.clients.forEach(cliente => {
+            const li = document.createElement('li');
+            li.textContent = `${cliente.nombre}`;
+            listaClientes.appendChild(li);
+        });
+
     } catch (error) {
         alert(error.message);
     }
+});
+
+//Añadir clientes
+btnGuardar.addEventListener('click', function (){
+
 });
