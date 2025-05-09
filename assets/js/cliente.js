@@ -44,7 +44,7 @@ cadenaBusqueda.addEventListener('input', async function() {
         });
 
     } catch (error) {
-        alert(error.message);
+        //alert(error.message);
     }
 });
 

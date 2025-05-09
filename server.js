@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: null, // your password
+  password: 'angxd.com', // your password
   database: 'V8Coffee' // name of your database
 });
 
@@ -75,9 +75,9 @@ app.post('/login', (req, res) => {
 app.post('/clients', (req, res) => {
   const { nombre } = req.body;
 
-  if (!nombre) {
-    return res.status(400).json({ error: 'No llego el nombre del cliente' });
-  }
+  // if (!nombre) {
+  //   return res.status(400).json({ error: 'No llego el nombre del cliente' });
+  // }
 
   const query = "SELECT * FROM Cliente WHERE nombre LIKE ?";
   const valor = `${nombre}%`;
@@ -89,7 +89,7 @@ app.post('/clients', (req, res) => {
       if (error) return res.status(500).json({ error: error.message });
 
       if (results.length === 0) {
-        return res.status(204).json({ error: 'No se encontraron usuarios con: ' + nombre });
+        return res.json({ });
       }
 
       const clients = results;
