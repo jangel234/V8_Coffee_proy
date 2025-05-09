@@ -45,6 +45,7 @@ CREATE TABLE Pedidos (
     id_Cliente int NOT NULL,
     id_Empleado int NOT NULL,
     total decimal(10,2) NOT NULL,
+    estado boolean DEFAULT 0,
     FOREIGN KEY (id_Cliente) REFERENCES Clientes(id),
     FOREIGN KEY (id_Empleado) REFERENCES Usuarios(id_Empleado)
 );
@@ -60,8 +61,14 @@ CREATE TABLE PP (
 -- Registros base
 INSERT INTO Clientes (nombre, telefono) VALUES
 ('Juan Perez', '3121234567'),
-('Maria Gomez', '3121234568'),
-('Julian Juarez', '3122936134');
+('Maria Gomez', '3121234560'),
+('Julian Juarez', '3122936134'),
+('Carlos Perez', '3121234561'),
+('Ian Gomez', '3121234564'),
+('Cesar Juarez', '3122936132'),
+('Angel Perez', '3121234562'),
+('Javier Gomez', '3121234565'),
+('Pollo Juarez', '3122936133');
 
 INSERT INTO Usuarios (nombre, telefono, rol) VALUES
 ('Carlos Ruiz', '3121234568', 'Encargado'),
