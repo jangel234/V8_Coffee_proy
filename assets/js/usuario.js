@@ -79,6 +79,7 @@ btnGuardar.addEventListener('click', async function () {
     setTimeout(function () {
         let s = document.getElementById('form');
         s.reset();
+        location.reload();
     }, 2000);
 });
 
