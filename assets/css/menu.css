@@ -9,7 +9,7 @@ body {
   padding: 0;
 }
 
-.header {
+.site-header {
   background-color: #6B4423;
   color: white;
   padding: 1rem;
@@ -23,9 +23,13 @@ body {
   font-weight: bold;
 }
 
-.nav a {
+.site-nav {
+
+}
+
+.site-nav a {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   margin-left: 1rem;
 }
 

@@ -23,9 +23,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (data.user.rol === 'Barista') {
             // Aqui va a donde se dirigira si es barista
             console.log('Hazme un cafe wey');
+            window.location.href = './assets/html/cliente.html';
         } else if (data.user.rol === 'Encargado') {
             // Aqui va a donde se dirigira si es Encargado
             console.log('Pinche jefe wey');
+            window.location.href = './assets/html/administrador.html';
         }
 
     } catch (error) {
