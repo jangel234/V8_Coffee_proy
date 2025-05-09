@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -16,28 +16,47 @@
     <script>
         window.onload = async () => {
             // Obtiene la informacion de las bebidas
+            let nombre = 'Benito Camelo';
+            let telefono = 3121221221;
             try {
-                const response = await fetch('http://localhost:3000/products');
-                let bebidas = await response.json();
-
-                console.log(bebidas)
-
-                bebidas.forEach(bebida => {
-                    console.log(bebida)
+                const response = await fetch('http://localhost:3000/newClient', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, telefono })
                 });
+                let res = await response.json();
+
+                console.log(res);
 
             } catch (error) {
-                console.error('Error al cargar bebidas:', error);
+
             }
             //console.clear();
             //console.log('s')
+            setTimeout(async function () {
+                console.log("3 sec");
+                try {
+                const response = await fetch('http://localhost:3000/deleteClient', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ telefono })
+                });
+                let res = await response.json();
+                console.log(res);
+
+            } catch (error) {
+                //console.error('Error al cargar bebidas:', error);
+            }
+            }, 3000);
+
+            
         }
     </script>
 </body>
 
-</html> -->
+</html>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -47,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="body">
-  <!-- Header -->
+  
   <header class="header">
     <h1 class="title">v8ocho Café</h1>
     <nav class="nav">
@@ -60,7 +79,7 @@
   <main class="main">
     <h2 class="section-title">Buscar o Registrar Cliente</h2>
     <div class="card">
-      <!-- Buscar Cliente -->
+      
       <div class="section">
         <h3 class="section-subtitle">Buscar Cliente</h3>
         <div class="search-group">
@@ -68,11 +87,11 @@
         </div>
         <div>
           <ul id="lista_clientes">
-            <!--Listado de clientes-->
+            
           </ul>
         </div>
       </div>
-      <!-- Registrar Cliente -->
+      
       <div class="section">
         <h3 class="section-subtitle">Registrar Cliente Nuevo</h3>
         <form class="form">
@@ -87,4 +106,4 @@
   <footer class="footer">© 2025 v8ocho Café</footer>
   <script src="./../js/cliente.js"></script>
 </body>
-</html>
+</html> -->

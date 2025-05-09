@@ -29,36 +29,28 @@ connection.connect(error => {
 // //
 // //
 
-//obtener usuarios
-//en desuso
-// app.get('/users', (req, res) => {
-//   connection.query('SELECT nombre FROM users', (error, results) => {
-//     if (error) {
-//       res.status(500).json({ error: error.message });
-//       return;
-//     }
-//     res.json(results);
-//   });
-// });
-
 // login
 app.post('/login', (req, res) => {
   const { usuario, telefono } = req.body;
 
+  // validacion
   if (!usuario || !telefono) {
     return res.status(400).json({ error: 'Usuario y telefono requeridos' });
   }
 
+  // conexion
   connection.query(
     'SELECT * FROM Usuarios WHERE nombre = BINARY ? AND telefono = BINARY ?',
     [usuario, telefono],
     (error, results) => {
+      // posibles errores
       if (error) return res.status(500).json({ error: error.message });
 
       if (results.length === 0) {
         return res.status(401).json({ error: 'Credenciales inválidas' });
       }
 
+      //resultado 
       const user = results[0];
 
       res.json({
@@ -70,7 +62,6 @@ app.post('/login', (req, res) => {
   );
 });
 
-
 // busequeda de clientes  --    nombre LIKE nombre%
 app.post('/clients', (req, res) => {
   const { nombre } = req.body;
@@ -79,6 +70,7 @@ app.post('/clients', (req, res) => {
   //   return res.status(400).json({ error: 'No llego el nombre del cliente' });
   // }
 
+  // fusion de query con el nombre para que tome en cuenta el LIKE = xxx%
   const query = "SELECT * FROM Cliente WHERE nombre LIKE ?";
   const valor = `${nombre}%`;
 
@@ -86,12 +78,14 @@ app.post('/clients', (req, res) => {
     query,
     [valor],
     (error, results) => {
+      // posibles errores
       if (error) return res.status(500).json({ error: error.message });
 
       if (results.length === 0) {
         return res.json({ });
       }
 
+      //resultados
       const clients = results;
 
       res.json({clients});
@@ -99,17 +93,102 @@ app.post('/clients', (req, res) => {
   );
 });
 
+// registro nuevo cliente
+app.post('/newClient', async (req, res) => {
+  const { nombre, telefono } = req.body;
+
+  // Validación básica
+  // if (!nombre || !telefono) {
+  //   return res.status(400).json({ error: 'Todos los campos son requeridos' });
+  // }
+
+  try {
+    // consulta
+    const [existing] = await connection.promise().query(
+      'SELECT * FROM Clientes WHERE telefono = ?',
+      [telefono]
+    );
+
+    //validacion
+    if (existing.length > 0) {
+      return res.status(409).json({ error: 'Usuario ya existente' });
+    }
+
+    // Insertar nuevo usuario
+    const [result] = await connection.promise().query(
+      'INSERT INTO Clientes (nombre, telefono) VALUES (?, ?)',
+      [nombre, telefono]
+    );
+
+    //respuesta
+    res.status(201).json({
+      success: true,
+      message: 'Usuario registrado exitosamente',
+      userId: result.insertId
+    });
+
+    //error
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+});
 
 //obtener productos
 app.get('/products', (req, res) => {
+  // conexion
   connection.query('SELECT * FROM Productos', (error, results) => {
     if (error) {
+      //error
       res.status(500).json({ error: error.message });
       return;
     }
+    // resultados en formato json
     res.json(results);
   });
 });
+
+
+
+/////////////////////////////////////// TEST PARA BACKEND ///////////////////////////////////////////////
+//en desuso
+// app.get('/users', (req, res) => {
+//   connection.query('SELECT nombre FROM users', (error, results) => {
+//     if (error) {
+//       res.status(500).json({ error: error.message });
+//       return;
+//     }
+//     res.json(results);
+//   });
+// });
+app.post('/deleteClient', (req, res) => {
+  const {telefono} = req.body;
+  
+  // Encontrar y eliminar el elemento
+  connection.query(
+    'DELETE FROM Clientes WHERE telefono = ?',
+    [telefono],
+    (error, results) => {
+      // posibles errores
+      if (error) return res.status(500).json({ error: error.message });
+
+      if (results.length === 0) {
+        return res.status(401).json({ error: 'Alv' });
+      }
+
+
+      res.json({
+        success: true,
+        message: 'Eliminacion Exitosa',
+        results
+      });
+    }
+  );
+});
+
+///////////////////////////////////////// FIN DE TEST ////////////////////////////////////////////////
+
+
 
 // Iniciar servidor
 app.listen(3000, () => {

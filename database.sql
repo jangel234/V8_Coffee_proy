@@ -2,7 +2,7 @@ drop database if exists V8Coffee;
 create database V8Coffee;
 use V8Coffee;
 -- Creación de tablas
-CREATE TABLE Cliente (
+CREATE TABLE Clientes (
     id int PRIMARY KEY AUTO_INCREMENT,
     nombre varchar(100) NOT NULL,
     telefono varchar(10) NOT NULL
