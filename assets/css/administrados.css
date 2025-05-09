@@ -6,6 +6,9 @@ body.admin-page {
   font-family: 'Poppins', sans-serif;
   background-color: #F0EAD6;
   color: #6B4423;
+  background-image: url(./imgs/wallpaper-6380532_1280.webp);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .site-header {

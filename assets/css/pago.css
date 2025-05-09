@@ -6,6 +6,9 @@ body.payment-page {
   font-family: 'Poppins', sans-serif;
   background-color: #FFF5E1;
   color: #6B4423;
+  background-image: url(./imgs/wallpaper-6380532_1280.webp);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .page-header {

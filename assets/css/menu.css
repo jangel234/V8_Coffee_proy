@@ -7,6 +7,9 @@ body {
   color: #6B4423;
   margin: 0;
   padding: 0;
+  background-image: url(./imgs/wallpaper-6380532_1280.webp);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .site-header {
