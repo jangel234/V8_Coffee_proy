@@ -71,7 +71,7 @@ app.post('/clients', (req, res) => {
   // }
 
   // fusion de query con el nombre para que tome en cuenta el LIKE = xxx%
-  const query = "SELECT * FROM Cliente WHERE nombre LIKE ?";
+  const query = "SELECT * FROM Clientes WHERE nombre LIKE ?";
   const valor = `${nombre}%`;
 
   connection.query(

@@ -1,6 +1,4 @@
 const cadenaBusqueda = document.getElementById('searchString');
-const nombreUsuario = document.getElementById('inp_nombre').value;
-const emailUsuario = document.getElementById('inp_email').value;
 const btnGuardar = document.getElementById('btn_guardar');
 const listaClientes = document.getElementById('lista_clientes');
 
@@ -18,7 +16,7 @@ cadenaBusqueda.addEventListener('input', async function() {
 
         const data = await response.json();
 
-        if (!response.ok) throw new Error(data.error || 'Error en el login');
+        if (!response.ok) throw new Error(data.error || 'Error en la búsqueda');
 
 
         console.log(data);
@@ -49,6 +47,32 @@ cadenaBusqueda.addEventListener('input', async function() {
 });
 
 //Añadir clientes
-btnGuardar.addEventListener('click', function (){
+btnGuardar.addEventListener('click', async function (){
 
+    const nombreUsuario = document.getElementById('inp_nombre').value;
+    const telUsuario = document.getElementById('inp_email').value;
+    let nombre = nombreUsuario;
+    let telefono = telUsuario;
+    
+    console.log(nombre)
+    console.log(telefono)
+
+    if(!nombre || !telefono){
+        alert('Todos los campos son necesarios');
+        return;
+    }
+
+    try {
+            //envio de usuario
+            const response = await fetch('http://localhost:3000/newClient', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, telefono })
+            });
+            let res = await response.json();
+
+            console.log(res);
+    } catch (error) {
+        //alert(error.message);
+    }
 });

@@ -45,7 +45,7 @@ CREATE TABLE Pedidos (
     id_Cliente int NOT NULL,
     id_Empleado int NOT NULL,
     total decimal(10,2) NOT NULL,
-    FOREIGN KEY (id_Cliente) REFERENCES Cliente(id),
+    FOREIGN KEY (id_Cliente) REFERENCES Clientes(id),
     FOREIGN KEY (id_Empleado) REFERENCES Usuarios(id_Empleado)
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE PP (
 );
 
 -- Registros base
-INSERT INTO Cliente (nombre, telefono) VALUES
+INSERT INTO Clientes (nombre, telefono) VALUES
 ('Juan Perez', '3121234567'),
 ('Maria Gomez', '3121234568'),
 ('Julian Juarez', '3122936134');
