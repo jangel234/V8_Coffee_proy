@@ -73,12 +73,20 @@ body {
 
 .btn-frias {
   padding: 0.5rem 1.5rem;
-  color: #D2691E;
-  background-color: transparent;
-  border: 2px solid #D2691E;
+  background-color: #D2691E;
+  color: white;
+  border: none;
   border-radius: 9999px;
   cursor: pointer;
 }
+
+.btn-calientes:hover,
+.btn-frias:hover {
+  transform: scale(1.05);
+  background-color: #8B4513;
+}
+
+
 
 .grid-bebidas {
   display: grid;
