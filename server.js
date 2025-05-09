@@ -66,9 +66,9 @@ app.post('/login', (req, res) => {
 app.post('/clients', (req, res) => {
   const { nombre } = req.body;
 
-  // if (!nombre) {
-  //   return res.status(400).json({ error: 'No llego el nombre del cliente' });
-  // }
+  if (!nombre) {
+    return res.status(400).json({ error: 'No llego el nombre del cliente' });
+  }
 
   // fusion de query con el nombre para que tome en cuenta el LIKE = xxx%
   const query = "SELECT * FROM Clientes WHERE nombre LIKE ?";

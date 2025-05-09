@@ -1,9 +1,10 @@
 const cadenaBusqueda = document.getElementById('searchString');
 const btnGuardar = document.getElementById('btn_guardar');
 const listaClientes = document.getElementById('lista_clientes');
+const newclient = document.getElementById('newClient');
 
 //Busqueda
-cadenaBusqueda.addEventListener('input', async function() {
+cadenaBusqueda.addEventListener('input', async function () {
     let nombre = cadenaBusqueda.value;
 
     console.log(nombre);
@@ -21,7 +22,7 @@ cadenaBusqueda.addEventListener('input', async function() {
 
         console.log(data);
 
-         //creacion de la lista de clientes
+        //creacion de la lista de clientes
 
         // Limpiar la lista actual
         listaClientes.innerHTML = '';
@@ -47,32 +48,44 @@ cadenaBusqueda.addEventListener('input', async function() {
 });
 
 //Añadir clientes
-btnGuardar.addEventListener('click', async function (){
+btnGuardar.addEventListener('click', async function () {
 
     const nombreUsuario = document.getElementById('inp_nombre').value;
-    const telUsuario = document.getElementById('inp_email').value;
+    const telUsuario = document.getElementById('inp_tel').value;
     let nombre = nombreUsuario;
     let telefono = telUsuario;
-    
+
     console.log(nombre)
     console.log(telefono)
 
-    if(!nombre || !telefono){
+    if (!nombre || !telefono) {
         alert('Todos los campos son necesarios');
         return;
     }
 
     try {
-            //envio de usuario
-            const response = await fetch('http://localhost:3000/newClient', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nombre, telefono })
-            });
-            let res = await response.json();
+        //envio de usuario
+        const response = await fetch('http://localhost:3000/newClient', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, telefono })
+        });
+        let res = await response.json();
 
-            console.log(res);
+        console.log(res);
     } catch (error) {
         //alert(error.message);
     }
+    setTimeout(function () {
+        let s = document.getElementById('form');
+        s.reset();
+    }, 2000);
 });
+
+window.addEventListener('load', function () {
+    document.getElementById('register').style.display = "none";
+});
+
+newclient.addEventListener('click', function () {
+    document.getElementById('register').style.display = "block";
+})
