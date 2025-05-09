@@ -74,9 +74,9 @@ INSERT INTO Usuarios (nombre, telefono, rol) VALUES
 ('Carlos Ruiz', '3121234568', 'Encargado'),
 ('Pollo Bermudez', '3121111111', 'Barista'),
 ('Angel Aguilar', '3122222222', 'Barista'),
-('Ian', '3123333333', 'Barista'),
+('Ian', '3123333333', 'Cajero'),
 ('Ana Torres', '3121234566', 'Encargado'),
-('Cesarin', '3124444444', 'Barista');
+('Cesarin', '3124444444', 'Cajero');
 
 INSERT INTO Insumos (nombre, costo) VALUES
 ('Café molido', 15.50),

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>v8ocho – Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./../css/barista.css">
+</head>
+<body class="admin-page">
+  <header class="site-header">
+    <h1 class="site-header__title">Panel Admin</h1>
+    <a href="menu.html" class="site-nav__link">Volver al Menú</a>
+  </header>
+
+  <main class="main-content">
+    <h2 class="section-title">Pedidos Pendientes</h2>
+    <div class="table-wrap">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>ID</th><th>Cliente</th><th>Bebida</th><th>Tamaño</th><th>Extras</th><th>Total</th><th>Estado</th><th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td><td>María López</td><td>Latte</td><td>Grande</td><td>Chocolate</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
+          </tr>
+          <tr>
+            <td>001</td><td>María Gomez</td><td>Cappuccino Clásico</td><td>Grande</td><td>Shot cafe</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
+          </tr>
+          <tr>
+            <td>003</td><td>Carlos Perez</td><td>Mocha</td><td>Mediano</td><td>N/A</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
+          </tr>
+          <tr>
+            <td>004</td><td>Angel Perez</td><td>Café Latte</td><td>Grande</td><td>N/A</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
+          </tr>
+          <tr>
+            <td>002</td><td>Pollo Juarez</td><td>Café Frappé</td><td>mediano</td><td>N/A</td><td>$60</td>
+            <td class="status status--pending">En espera</td>
+            <td><button class="btn btn--primary btn--small">Completar</button></td>
+          </tr>
+          <!-- Más filas -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="site-footer">© 2025 v8ocho Café</footer>
+</body>
+</html>
