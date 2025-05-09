@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'change', // your password
+  password: 'angxd.com', // your password
   database: 'V8Coffee' // name of your database
 });
 
@@ -135,9 +135,22 @@ app.post('/newClient', async (req, res) => {
 });
 
 //obtener productos
-app.get('/products', (req, res) => {
+app.get('/coldProducts', (req, res) => {
   // conexion
-  connection.query('SELECT * FROM Productos', (error, results) => {
+  connection.query('SELECT * FROM Productos WHERE HC = 0', (error, results) => {
+    if (error) {
+      //error
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    // resultados en formato json
+    res.json(results);
+  });
+});
+
+app.get('/hotProducts', (req, res) => {
+  // conexion
+  connection.query('SELECT * FROM Productos WHERE HC = 1', (error, results) => {
     if (error) {
       //error
       res.status(500).json({ error: error.message });
