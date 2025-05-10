@@ -11,9 +11,6 @@ document.querySelectorAll(".btn-sta").forEach(function(button) {
       estado.textContent = "Completado";
       estado.classList.remove("status--pending");
       estado.classList.add("status--completed");
-  
-      // (Opcional) Desactivar el botón
-      this.disabled = true;
     });
   });
   
