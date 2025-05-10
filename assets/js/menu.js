@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCalientes = document.getElementById('btnCalientes');
   const btnFrias = document.getElementById('btnFrias');
   const grid = document.getElementById('gridBebidas');
+  const Subtitulo = document.getElementById('hero_div');
+  const cliente = localStorage.getItem('clienteSeleccionado');
+
+  const clienteCard = document.createElement('div');
+  const nombreCliente = document.createElement('h2');
+  nombreCliente.className = 'hero-title';
+  nombreCliente.textContent = "Descubre tu bebida favorita: " + `${cliente}`;
+  clienteCard.appendChild(nombreCliente);
+  Subtitulo.appendChild(clienteCard);
 
   // Función para cargar bebidas frías o calientes
   const cargarBebidas = async (tipo) => {
