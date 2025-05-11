@@ -38,7 +38,15 @@ cadenaBusqueda.addEventListener('input', async function () {
         // Agregar cada cliente a la lista
         data.clients.forEach(cliente => {
             const li = document.createElement('li');
-            li.textContent = `${cliente.nombre}`;
+            const a = document.createElement('a');
+            a.textContent = `${cliente.nombre}`;
+            a.href = './.././html/menu.html';
+
+            a.addEventListener('click', function () {
+                localStorage.setItem('clienteSeleccionado', cliente.nombre);
+            });
+
+            li.appendChild(a);
             listaClientes.appendChild(li);
         });
 

@@ -8,6 +8,20 @@ body {
   background-attachment: fixed;
 }
 
+a {
+  text-decoration: none;
+  color: #6B4423;
+}
+
+a :visited {
+  text-decoration: none;
+  color: #6B4423;
+}
+
+a :hover {
+  color: #6b4429;
+}
+
 p {
   text-align: right;
 }
