@@ -107,3 +107,17 @@ INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado, total) VALUES
 INSERT INTO PP (id_PI, id_Pedido) VALUES
 (1, 1),
 (3, 2);
+
+/*Vistas*/
+CREATE VIEW VistaPedidosClientesBebidas AS
+SELECT 
+    Pedidos.id AS id_pedido,
+    Clientes.nombre AS nombre_cliente,
+    Productos.nombre AS nombre_bebida,
+    Productos.tamanio AS tamnio_bebida,
+    Productos.precio AS precio_bebida
+FROM Pedidos
+JOIN Clientes ON Pedidos.id_Cliente = Clientes.id
+JOIN PP ON PP.id_Pedido = Pedidos.id
+JOIN PI ON PI.id = PP.id_PI
+JOIN Productos ON Productos.id = PI.id_Producto
