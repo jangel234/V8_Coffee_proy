@@ -1,56 +1,44 @@
-body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #FFF5E1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-image: url(./imgs/wallpaper-6380532_1280.webp);
-    background-size: cover;
-    background-attachment: fixed;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+    body {
+      background-image: url(./imgs/wallpaper-6380532_1280.webp);
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.login-container {
-    background-color: #f4daa7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 310px;
-}
+    .login-wrapper {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    .login-header {
+      background-color: #a0522d;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-.input-group {
-    margin-bottom: 15px;
-}
+    .login-form {
+      background-color: white;
+      padding: 2rem;
+    }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-}
+    .btn-cafe {
+      background-color: #a0522d;
+      color: white;
+    }
 
-.input-group input {
-    width: 95%;
-    padding: 8px;
-    border: 1px solid #ffaa00;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #fc8a3a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    color: #000;
-    background-color: rgba(255, 128, 37, 0.518);
-}
+    .btn-cafe:hover {
+      background-color: rgba(160, 82, 45, 0.8);
+      color: white;
+    }
