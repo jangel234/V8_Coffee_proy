@@ -164,6 +164,18 @@ app.get('/hotProducts', (req, res) => {
   });
 });
 
+app.get('/dessertProducts', (req, res) => {
+  // conexion
+  connection.query('SELECT * FROM Productos WHERE tamanio = "Postre"', (error, results) => {
+    if (error) {
+      //error
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    // resultados en formato json
+    res.json(results);
+  });
+});
 
 
 /////////////////////////////////////// TEST PARA BACKEND ///////////////////////////////////////////////
