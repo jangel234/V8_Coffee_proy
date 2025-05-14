@@ -15,11 +15,7 @@ CREATE TABLE Usuarios (
     rol varchar(50) NOT NULL
 );
 
-CREATE TABLE Insumos (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    nombre varchar(100) NOT NULL,
-    costo decimal(10,2) NOT NULL
-);
+
 
 CREATE TABLE Productos (
     id int PRIMARY KEY AUTO_INCREMENT,
@@ -30,14 +26,6 @@ CREATE TABLE Productos (
     precio decimal(10,2) NOT NULL
 );
 
-CREATE TABLE PI (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    id_Producto int NOT NULL,
-    id_Insumo int NOT NULL,
-    subtotal decimal(10,2),
-    FOREIGN KEY (id_Producto) REFERENCES Productos (id),
-    FOREIGN KEY (id_Insumo) REFERENCES Insumos (id)
-);
 
 CREATE TABLE Pedidos (
     id int PRIMARY KEY AUTO_INCREMENT,
@@ -52,9 +40,9 @@ CREATE TABLE Pedidos (
 
 CREATE TABLE PP (
     id int PRIMARY KEY AUTO_INCREMENT,
-    id_PI int NOT NULL,
+    id_Producto int NOT NULL,
     id_Pedido int NOT NULL,
-    FOREIGN KEY (id_PI) REFERENCES PI(id),
+    FOREIGN KEY (id_Producto) REFERENCES Productos(id),
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id)
 );
 
@@ -78,46 +66,28 @@ INSERT INTO Usuarios (nombre, telefono, rol) VALUES
 ('Ana Torres', '3121234566', 'Encargado'),
 ('Cesarin', '3124444444', 'Cajero');
 
-INSERT INTO Insumos (nombre, costo) VALUES
-('Café molido', 15.50),
-('Leche entera', 12.00),
-('Chocolate en polvo', 8.75);
 
 INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 ('Cappuccino Clásico', 'Preparado con doble shot de espresso', 'Mediano', 1, 45.00),
-('Mocha Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 1, 55.00),
+('Moka Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 1, 55.00),
 ('Café Americano', 'Preparado con agua caliente y espresso', 'Mediano', 0, 35.00),
 ('Café Latte', 'Preparado con leche vaporizada y espresso', 'Grande', 1, 50.00),
-('Café Frappé', 'Preparado con hielo y café', 'Grande', 0, 60.00),
+('Café Frappé', 'Preparado con hielo y café y azúcar', 'Grande', 0, 60.00),
 ('Café Helado', 'Preparado con hielo y café', 'Mediano', 0, 40.00),
 ('Matcha latte', 'Preparado con chocolate y espresso', 'Mediano', 1, 50.00),
-('Moka Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 0, 55.00);
+('Moka Blanco', 'Mezcla de chocolate blanco y espresso', 'Grande', 0, 55.00),
+('Pastel de Chocolate', 'Pastel de chocolate con crema', 'Postre', 0, 30.00),
+('Pastel de Fresa', 'Pastel de fresa con crema', 'Postre',0, 40.00),
+('Galleta de Avena', 'Galleta de avena con pasas', 'Postre', 0, 10.00),
+('Galleta de Chocolate', 'Galleta de chocolate con nuez', 'Postre', 0, 15.00),
+('Brownie', 'Brownie de chocolate con nuez', 'Postre', 0, 25.00);
 
-
-INSERT INTO PI (id_Producto, id_Insumo, subtotal) VALUES
-(1, 1, 15.50),
-(1, 2, 12.00),
-(2, 1, 15.50),
-(2, 3, 8.75);
 
 INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado, total) VALUES
 (NOW(), 1, 1, 100.00),
 (NOW(), 2, 2, 120.50);
 
-INSERT INTO PP (id_PI, id_Pedido) VALUES
+INSERT INTO PP (id_Producto, id_Pedido) VALUES
 (1, 1),
 (3, 2);
 
-/*Vistas*/
-CREATE VIEW VistaPedidosClientesBebidas AS
-SELECT 
-    Pedidos.id AS id_pedido,
-    Clientes.nombre AS nombre_cliente,
-    Productos.nombre AS nombre_bebida,
-    Productos.tamanio AS tamnio_bebida,
-    Productos.precio AS precio_bebida
-FROM Pedidos
-JOIN Clientes ON Pedidos.id_Cliente = Clientes.id
-JOIN PP ON PP.id_Pedido = Pedidos.id
-JOIN PI ON PI.id = PP.id_PI
-JOIN Productos ON Productos.id = PI.id_Producto

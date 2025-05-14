@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const btnCalientes = document.getElementById('btnCalientes');
   const btnFrias = document.getElementById('btnFrias');
+  const btnPostre = document.getElementById('btnPostre');
   const grid = document.getElementById('gridBebidas');
   const Subtitulo = document.getElementById('hero_div');
   const cliente = localStorage.getItem('clienteSeleccionado');
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.innerHTML = '';
 
       data.forEach((producto) => {
+        if (producto.tamanio !== 'Postre') {
         const card = document.createElement('article');
         card.classList.add('card');
         card.innerHTML = `
@@ -46,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
         grid.appendChild(card);
+        }
       });
     } catch (err) {
       console.error('Error cargando bebidas:', err);
@@ -54,10 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnCalientes.addEventListener('click', () => cargarBebidas('caliente'));
   btnFrias.addEventListener('click', () => cargarBebidas('fria'));
+  btnPostre.addEventListener('click', () => cargarPostres());
 
   // Carga inicial con bebidas calientes
   cargarBebidas('caliente');
 });
+
+// Función cargar postres
+const cargarPostres = async () => {
+  console.log('semen')
+  try {
+    const url = 'http://localhost:3000/dessertProducts';
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const gridPostres = document.getElementById('gridBebidas');
+    gridPostres.innerHTML = '';
+
+    data.forEach((producto) => {
+      const card = document.createElement('article');
+      card.classList.add('card');
+      card.innerHTML = `
+        <div class="card-content">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.procedimientos}</p>
+          <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar">Seleccionar</a>
+        </div>
+      `;
+      gridPostres.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Error cargando postres:', err);
+  }
+}
 
 //borrado del local
 window.addEventListener('beforeunload', function () {

@@ -86,6 +86,21 @@ body {
   background-color: #8B4513;
 }
 
+.btn-postre {
+  padding: 0.5rem 1.5rem;
+  background-color: #D2691E;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.btn-calientes:hover,
+.btn-postre:hover {
+  transform: scale(1.05);
+  background-color: #8B4513;
+}
+
 
 
 .grid-bebidas {
