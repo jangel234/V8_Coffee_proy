@@ -32,7 +32,7 @@ CREATE TABLE Pedidos (
     Fecha DATETIME NOT NULL,
     id_Cliente int NOT NULL,
     id_Empleado int NOT NULL,
-    total decimal(10,2) NOT NULL,
+    total decimal(10,2) default 0,
     FOREIGN KEY (id_Cliente) REFERENCES Clientes(id),
     FOREIGN KEY (id_Empleado) REFERENCES Usuarios(id_Empleado)
 );
@@ -42,10 +42,29 @@ CREATE TABLE PP (
     id_Producto int NOT NULL,
     id_Pedido int NOT NULL,
     estado boolean DEFAULT 0,
-    extras varchar (70),
+    extras varchar (70) DEFAULT 'N/A',
     FOREIGN KEY (id_Producto) REFERENCES Productos(id),
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER ActualizarTotalPedido
+AFTER INSERT ON PP
+FOR EACH ROW
+BEGIN
+    -- Sumar el precio del producto al total del pedido
+    UPDATE Pedidos
+    SET total = total + (
+        SELECT precio 
+        FROM Productos 
+        WHERE id = NEW.id_Producto
+        LIMIT 1 -- Añade esto para evitar errores si hay múltiples filas
+    )
+    WHERE id = NEW.id_Pedido;
+END $$
+
+DELIMITER ;
 
 -- Registros base
 INSERT INTO Clientes (nombre, telefono) VALUES
@@ -82,12 +101,3 @@ INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 ('Galleta de Avena', 'Galleta de avena con pasas', 'Postre', 0, 10.00),
 ('Galleta de Chocolate', 'Galleta de chocolate con nuez', 'Postre', 0, 15.00),
 ('Brownie', 'Brownie de chocolate con nuez', 'Postre', 0, 25.00);
-
-
-INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado, total) VALUES
-(NOW(), 1, 1, 45.00),
-(NOW(), 2, 2, 35.00);
-
-INSERT INTO PP (id_Producto, id_Pedido) VALUES
-(1, 1),
-(3, 2);
