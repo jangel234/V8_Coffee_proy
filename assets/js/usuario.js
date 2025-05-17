@@ -30,6 +30,7 @@ cadenaBusqueda.addEventListener('input', async function () {
         // Verificar que haya resultados
         if (data.length === 0) {
             const li = document.createElement('li');
+            li.style.listStyleType = 'none';
             li.textContent = 'No se encontraron clientes.';
             listaClientes.appendChild(li);
             return;
@@ -39,11 +40,14 @@ cadenaBusqueda.addEventListener('input', async function () {
         data.clients.forEach(cliente => {
             const li = document.createElement('li');
             const a = document.createElement('a');
+            li.style.listStyleType = 'none';
             a.textContent = `${cliente.nombre}`;
             a.href = './.././html/menu.html';
+            
 
             a.addEventListener('click', function () {
                 localStorage.setItem('clienteSeleccionado', cliente.nombre);
+                localStorage.setItem('idSelectedClient', cliente.id);
             });
 
             li.appendChild(a);

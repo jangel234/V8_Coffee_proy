@@ -1,3 +1,7 @@
+window.addEventListener('load', function () {
+    localStorage.removeItem('idCajero');
+});
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -28,6 +32,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             window.location.href = './assets/html/administrador.html';
         } else if (data.user.rol === 'Cajero') {
             // Aqui va a donde se dirigira si es Cajero
+            localStorage.setItem('idCajero', data.user.id_Empleado);
             window.location.href = './assets/html/usuario.html';
         }
 

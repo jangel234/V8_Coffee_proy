@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('card');
         card.innerHTML = `
           <div class="card-content">
-            <h3>${producto.nombre}</h3>
+            <h3>${producto.nombre} - ${producto.tamanio}</h3>
             <p>${producto.procedimientos}</p>
-            <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar">Seleccionar</a>
+            <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar" onClick="selectedProd(${producto.id})">Seleccionar</a>
           </div>
         `;
         grid.appendChild(card);
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función cargar postres
 const cargarPostres = async () => {
-  console.log('semen')
   try {
     const url = 'http://localhost:3000/dessertProducts';
     const response = await fetch(url);
@@ -81,7 +80,7 @@ const cargarPostres = async () => {
         <div class="card-content">
           <h3>${producto.nombre}</h3>
           <p>${producto.procedimientos}</p>
-          <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar">Seleccionar</a>
+          <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar" onClick="selectedProd(${producto.id})">Seleccionar</a>
         </div>
       `;
       gridPostres.appendChild(card);
@@ -93,5 +92,10 @@ const cargarPostres = async () => {
 
 //borrado del local
 window.addEventListener('beforeunload', function () {
-    localStorage.removeItem('clienteSeleccionado');
+    //localStorage.removeItem('clienteSeleccionado');
 });
+
+
+function selectedProd(id) {
+  localStorage.setItem('idProd', id);
+}

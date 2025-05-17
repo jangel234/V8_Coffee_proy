@@ -33,7 +33,6 @@ CREATE TABLE Pedidos (
     id_Cliente int NOT NULL,
     id_Empleado int NOT NULL,
     total decimal(10,2) NOT NULL,
-    estado boolean DEFAULT 0,
     FOREIGN KEY (id_Cliente) REFERENCES Clientes(id),
     FOREIGN KEY (id_Empleado) REFERENCES Usuarios(id_Empleado)
 );
@@ -42,6 +41,8 @@ CREATE TABLE PP (
     id int PRIMARY KEY AUTO_INCREMENT,
     id_Producto int NOT NULL,
     id_Pedido int NOT NULL,
+    estado boolean DEFAULT 0,
+    extras varchar (70),
     FOREIGN KEY (id_Producto) REFERENCES Productos(id),
     FOREIGN KEY (id_Pedido) REFERENCES Pedidos(id)
 );
@@ -84,10 +85,9 @@ INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 
 
 INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado, total) VALUES
-(NOW(), 1, 1, 100.00),
-(NOW(), 2, 2, 120.50);
+(NOW(), 1, 1, 45.00),
+(NOW(), 2, 2, 35.00);
 
 INSERT INTO PP (id_Producto, id_Pedido) VALUES
 (1, 1),
 (3, 2);
-

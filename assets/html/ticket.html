@@ -9,24 +9,27 @@
 </head>
 <body class="ticket-page">
   <header class="page-header">
-    <h1 class="page-header__title">Tu pedido está listo</h1>
+    <h1 class="page-header__title">Tu pedido estará listo Pronto!</h1>
   </header>
 
   <main class="main-content">
     <div class="card">
-      <h2 class="card__subtitle">Pedido #001</h2>
-      <ul class="order-list">
+      <h2 class="card__subtitle" id="pedido"></h2>
+      <ul class="order-list" id="order">
+        <!-- <li>Latte Grande<br><span class="order-list__extra">+ Chocolate, Crema Batida</span></li>
+        <br>
         <li>Latte Grande<br><span class="order-list__extra">+ Chocolate, Crema Batida</span></li>
-        <li>Cold Brew Mediano</li>
+        <br> -->
       </ul>
       <div class="order-total">
-        <span>Total</span><span>$110</span>
+        <span>Total</span><span id="total"></span>
       </div>
       <button onclick="window.print()" class="btn btn--primary btn--block">Imprimir Ticket</button>
-      <a href="menu.html" class="link-back">Volver al Menú</a>
+      <a href="usuario.html" class="link-back">Volver al Menú</a>
     </div>
   </main>
 
   <footer class="site-footer">© 2025 v8ocho Café</footer>
+  <script src="./../js/ticket.js"></script>
 </body>
 </html>
