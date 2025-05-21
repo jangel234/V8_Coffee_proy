@@ -11,7 +11,7 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'angxd.com', // angel
+  // password: 'angxd.com', // angel
   // password: 'nose', // ian
   // password: 'soygay23', // cesarin
   // password: null, // pollo

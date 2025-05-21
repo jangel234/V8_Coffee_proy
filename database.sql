@@ -101,3 +101,164 @@ INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 ('Galleta de Avena', 'Galleta de avena con pasas', 'Postre', 0, 10.00),
 ('Galleta de Chocolate', 'Galleta de chocolate con nuez', 'Postre', 0, 15.00),
 ('Brownie', 'Brownie de chocolate con nuez', 'Postre', 0, 25.00);
+
+CREATE VIEW vista_ventas_totales AS
+SELECT 
+    SUM(total) AS ventas_totales
+FROM Pedidos;
+
+CREATE VIEW vista_promedio_diario AS
+SELECT 
+    ROUND(SUM(total) / 24, 2) AS promedio_diario
+FROM Pedidos
+WHERE Fecha BETWEEN '2025-06-01' AND '2025-06-24';
+
+CREATE VIEW vista_producto_mas_vendido AS
+SELECT 
+    P.nombre AS producto,
+    COUNT(*) AS cantidad_vendida
+FROM PP
+JOIN Productos P ON P.id = PP.id_Producto
+GROUP BY P.nombre
+ORDER BY cantidad_vendida DESC
+LIMIT 1;
+
+CREATE VIEW vista_mejor_dia AS
+SELECT 
+    DATE(Fecha) AS fecha,
+    SUM(total) AS total_dia
+FROM Pedidos
+GROUP BY DATE(Fecha)
+ORDER BY total_dia DESC
+LIMIT 1;
+
+CREATE VIEW vista_ventas_por_producto AS
+SELECT 
+    P.nombre AS producto,
+    CASE 
+        WHEN P.tamanio = 'Postre' THEN 'Comida'
+        WHEN P.HC = 1 THEN 'Bebidas Calientes'
+        WHEN P.HC = 0 THEN 'Panadería'
+        ELSE 'Otro'
+    END AS categoria,
+    COUNT(*) AS cantidad_vendida,
+    P.precio AS precio_unitario,
+    ROUND(P.precio * COUNT(*), 2) AS total
+FROM PP
+JOIN Productos P ON P.id = PP.id_Producto
+GROUP BY P.nombre, P.precio, categoria;
+
+CREATE OR REPLACE VIEW vista_total_general_productos AS
+SELECT 
+    ROUND(SUM(total_por_producto), 2) AS total_general
+FROM (
+    SELECT 
+        P.nombre,
+        P.precio * COUNT(*) AS total_por_producto
+    FROM PP
+    JOIN Productos P ON P.id = PP.id_Producto
+    GROUP BY P.nombre, P.precio
+) AS subconsulta;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_ventas_totales()
+BEGIN
+    SELECT 
+        SUM(total) AS ventas_totales
+    FROM Pedidos;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_promedio_diario(IN fecha_inicio DATE, IN fecha_fin DATE)
+BEGIN
+    SELECT 
+        ROUND(SUM(total) / 24, 2) AS promedio_diario
+    FROM Pedidos
+    WHERE Fecha BETWEEN fecha_inicio AND fecha_fin;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_producto_mas_vendido()
+BEGIN
+    SELECT 
+        P.nombre AS producto,
+        COUNT(*) AS cantidad_vendida
+    FROM PP
+    JOIN Productos P ON P.id = PP.id_Producto
+    GROUP BY P.nombre
+    ORDER BY cantidad_vendida DESC
+    LIMIT 1;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_mejor_dia()
+BEGIN
+    SELECT 
+        DATE(Fecha) AS fecha,
+        SUM(total) AS total_dia
+    FROM Pedidos
+    GROUP BY DATE(Fecha)
+    ORDER BY total_dia DESC
+    LIMIT 1;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_ventas_por_producto()
+BEGIN
+    SELECT 
+        P.nombre AS producto,
+        CASE 
+            WHEN P.tamanio = 'Postre' THEN 'Comida'
+            WHEN P.HC = 1 THEN 'Bebidas Calientes'
+            WHEN P.HC = 0 THEN 'Panadería'
+            ELSE 'Otro'
+        END AS categoria,
+        COUNT(*) AS cantidad_vendida,
+        P.precio AS precio_unitario,
+        ROUND(P.precio * COUNT(*), 2) AS total
+    FROM PP
+    JOIN Productos P ON P.id = PP.id_Producto
+    GROUP BY P.nombre, P.precio, categoria;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE obtener_total_general_productos()
+BEGIN
+    SELECT 
+        ROUND(SUM(total_por_producto), 2) AS total_general
+    FROM (
+        SELECT 
+            P.nombre,
+            P.precio * COUNT(*) AS total_por_producto
+        FROM PP
+        JOIN Productos P ON P.id = PP.id_Producto
+        GROUP BY P.nombre, P.precio
+    ) AS subconsulta;
+END $$
+
+
+DELIMITER ;
+
+CALL obtener_ventas_totales();
+CALL obtener_promedio_diario('2025-06-01', '2025-06-24');
+CALL obtener_producto_mas_vendido();
+CALL obtener_mejor_dia();
+CALL obtener_ventas_por_producto();
+CALL obtener_total_general_productos();
+
