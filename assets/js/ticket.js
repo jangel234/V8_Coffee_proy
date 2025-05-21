@@ -34,7 +34,7 @@ window.addEventListener('load', async function () {
             let br2 = document.createElement('br');
             let span = document.createElement('span');
             li.textContent = product.nombre;
-            span.textContent = '+ '+ product.extras;
+            span.textContent = '+ ' + product.extras;
             span.className = 'order-list__extra';
 
             li.appendChild(br2);
@@ -48,7 +48,9 @@ window.addEventListener('load', async function () {
 
 });
 
-getElementById('backMnu').addEventListener('click', () => {
-
-    window.location.href = "./../html/menu.html";
+document.getElementById('backMnu').addEventListener('click', () => {
+    let user = localStorage.getItem('idCajero');
+    localStorage.clear();
+    localStorage.setItem('idCajero', user)
+    window.location.href = "./../html/usuario.html";
 });
