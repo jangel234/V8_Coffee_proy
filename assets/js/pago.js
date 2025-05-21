@@ -10,10 +10,15 @@ window.addEventListener('load', async function () {
             });
 
             const data = await response.json();
-            title.textContent = name +' paga: '+ data.total +', con:';
+            title.textContent = name +' paga: $'+ data.total +', con:';
             console.log(data.total)
         } catch (error) {
             alert(error.message);
         }
     
+});
+
+document.getElementById('btnCont').addEventListener('click', () => {
+    localStorage.setItem('mPago',document.getElementById('payment').value);
+    window.location.href = "./../html/ticket.html";
 });

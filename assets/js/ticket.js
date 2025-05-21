@@ -13,7 +13,7 @@ window.addEventListener('load', async function () {
 
         const data = await response.json();
         total.textContent = '$' + data.total;
-        console.log(data.total)
+        //console.log(data.total)
     } catch (error) {
         alert(error.message);
     }
@@ -27,7 +27,7 @@ window.addEventListener('load', async function () {
         });
 
         const data = await response.json();
-        console.log(data)
+        //console.log(data)
         data.forEach(product => {
             let li = document.createElement('li');
             let br = document.createElement('br');
@@ -46,4 +46,9 @@ window.addEventListener('load', async function () {
         alert(error.message);
     }
 
+});
+
+getElementById('backMnu').addEventListener('click', () => {
+
+    window.location.href = "./../html/menu.html";
 });
