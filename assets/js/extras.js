@@ -1,97 +1,113 @@
 document.getElementById('continue').addEventListener('click', async () => {
-  console.log('continuar');
-  let producto = localStorage.getItem('idProd');
-  let idCliente = localStorage.getItem('idSelectedClient');
-  let idEmpleado = localStorage.getItem('idCajero');
-
-
-  let pedido = localStorage.getItem('P');
-  let extras = 'Extras aquí';
-
-  if (!producto || !pedido || !extras) {
-  console.error("Error: Datos faltantes en el pedido:");
-  console.log("producto:", producto);
-  console.log("pedido:", pedido);
-  console.log("extras:", extras);
-  alert("Error: No se pudo continuar. Faltan datos del producto, pedido o extras.");
-  return;
-}
-
-  try {
-    // Si ya existe un pedido
+    console.log('continuar');
+    let pedido = localStorage.getItem('P');
     if (pedido) {
-      await fetch('http://localhost:3000/newPP', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ producto, pedido, extras })
-      });
+        try {
+            let producto = localStorage.getItem('idProd');
+            let pedido = localStorage.getItem('P');
+            let extras = 'Extras aqui';
+            const response = await fetch('http://localhost:3000/newPP', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ producto, pedido, extras })
+            });
+
+            const data = await response.json();
+            console.log(data);
+
+        } catch (error) {
+            alert(error.message);
+        }
     } else {
-      // Crear nuevo pedido primero
-      const res = await fetch('http://localhost:3000/newOrder', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idCliente, idEmpleado })
-      });
+        try {
+            let idCliente = localStorage.getItem('idSelectedClient');
+            let idEmpleado = localStorage.getItem('idCajero');
+            const response = await fetch('http://localhost:3000/newOrder', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idCliente, idEmpleado })
+            });
 
-      const data = await res.json();
-      pedido = data.pedidoId;
+            const data = await response.json();
+            localStorage.setItem('P', data.pedidoId);
 
-      localStorage.setItem('P', pedido);
+        } catch (error) {
+            alert(error.message);
+        }
+        try {
+            let producto = localStorage.getItem('idProd');
+            let pedido = localStorage.getItem('P');
+            let extras = 'Extras aqui';
+            const response = await fetch('http://localhost:3000/newPP', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ producto, pedido, extras })
+            });
 
-      // Luego registrar PP
-      await fetch('http://localhost:3000/newPP', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ producto, pedido, extras })
-      });
+            const data = await response.json();
+            localStorage.setItem('A', pedido);
+
+        } catch (error) {
+            alert(error.message);
+        }
     }
-
-    // Redirigir
-    window.location.href = "./../html/pago.html";
-
-  } catch (error) {
-    console.error(error);
-    alert("Hubo un problema al registrar el pedido.");
-  }
-})
-
+    localStorage.removeItem('P')
+    window.location.href = "./../html/pago.html"
+});
 
 document.getElementById('addOther').addEventListener('click', async () => {
-  console.log('agrega otro');
-  let producto = localStorage.getItem('idProd');
-  let idCliente = localStorage.getItem('idSelectedClient');
-  let idEmpleado = localStorage.getItem('idCajero');
+    console.log('agrega otro');
+    let pedido = localStorage.getItem('P');
+    if (pedido) {
+        try {
+            let producto = localStorage.getItem('idProd');
+            let pedido = localStorage.getItem('P');
+            let extras = 'Extras aqui';
+            const response = await fetch('http://localhost:3000/newPP', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ producto, pedido, extras })
+            });
 
-  if (!producto || !idCliente || !idEmpleado) {
-    alert('Error: Faltan datos del producto, cliente o cajero.');
-    return;
-  }
+            const data = await response.json();
+            console.log(data);
 
-  let pedido = localStorage.getItem('P');
-  let extras = 'Extras aquí';
+        } catch (error) {
+            alert(error.message);
+        }
+    } else {
+        try {
+            let idCliente = localStorage.getItem('idSelectedClient');
+            let idEmpleado = localStorage.getItem('idCajero');
+            const response = await fetch('http://localhost:3000/newOrder', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idCliente, idEmpleado })
+            });
 
-  try {
-    if (!pedido) {
-      const res = await fetch('http://localhost:3000/newOrder', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idCliente, idEmpleado })
-      });
+            const data = await response.json();
+            localStorage.setItem('P', data.pedidoId);
 
-      const data = await res.json();
-      pedido = data.pedidoId;
-      localStorage.setItem('P', pedido);
+        } catch (error) {
+            alert(error.message);
+        }
+        try {
+            let producto = localStorage.getItem('idProd');
+            let pedido = localStorage.getItem('P');
+            let extras = 'Extras aqui';
+            const response = await fetch('http://localhost:3000/newPP', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ producto, pedido, extras })
+            });
+
+            const data = await response.json();
+            localStorage.setItem('A', pedido);
+
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
-    await fetch('http://localhost:3000/newPP', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ producto, pedido, extras })
-    });
-
-    window.location.href = "./../html/menu.html";
-  } catch (error) {
-    console.error(error);
-    alert("Error al añadir producto al pedido.");
-  }
+    window.location.href = "./../html/menu.html"
 });

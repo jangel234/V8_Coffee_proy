@@ -1,7 +1,7 @@
 window.addEventListener('load', async function () {
     const total = document.getElementById('total');
     const pedido = document.getElementById('pedido');
-    let idPedido = JSON.parse(localStorage.getItem('P'));
+    let idPedido = JSON.parse(localStorage.getItem('A'));
     pedido.textContent = 'Pedido #' + idPedido;
     try {
 

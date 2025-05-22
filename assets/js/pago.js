@@ -2,7 +2,7 @@ window.addEventListener('load', async function () {
     const title = document.getElementById('title');
     try {
         let name = localStorage.getItem('clienteSeleccionado');
-            let idPedido = JSON.parse(localStorage.getItem('P'));
+            let idPedido = JSON.parse(localStorage.getItem('A'));
             const response = await fetch('http://localhost:3000/getTotal', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
