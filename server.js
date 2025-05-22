@@ -11,8 +11,8 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  password: 'angxd.com', // angel
-  // password: 'nose', // ian
+  //password: 'angxd.com', // angel
+   password: 'Uwuntuserver1', // ian
   // password: 'soygay23', // cesarin
   // password: null, // pollo
   database: 'V8Coffee' // name of your database
@@ -261,6 +261,49 @@ app.post('/getPedido', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+
+///Aqui empiezan las vistas
+
+// Ventas Totales por Mes
+app.get('/api/ventas-totales', (req, res) => {
+  connection.query('SELECT * FROM ventas_por_mes', (error, results) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(results);
+  });
+});
+
+// Promedio Diario por Mes
+app.get('/api/promedio-diario', (req, res) => {
+  connection.query('SELECT * FROM promedio_diario_por_mes', (error, results) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(results);
+  });
+});
+
+// Producto Más Vendido del Mes
+app.get('/api/producto-mas-vendido', (req, res) => {
+  connection.query('SELECT * FROM producto_mas_vendido_mes', (error, results) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(results);
+  });
+});
+
+// Mejor Día de Venta
+app.get('/api/mejor-dia', (req, res) => {
+  connection.query('SELECT * FROM mejor_dia_venta_mes', (error, results) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(results);
+  });
+});
+
+// Ventas por Producto
+app.get('/api/ventas-producto', (req, res) => {
+  connection.query('SELECT * FROM ventas_por_producto', (error, results) => {
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(results);
+  });
 });
 
 

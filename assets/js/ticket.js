@@ -1,7 +1,7 @@
 window.addEventListener('load', async function () {
     const total = document.getElementById('total');
     const pedido = document.getElementById('pedido');
-    let idPedido = JSON.parse(localStorage.getItem('A'));
+    let idPedido = JSON.parse(localStorage.getItem('P'));
     pedido.textContent = 'Pedido #' + idPedido;
     try {
 
@@ -49,6 +49,6 @@ window.addEventListener('load', async function () {
 });
 
 getElementById('backMnu').addEventListener('click', () => {
-
+    localStorage.removeItem('P');
     window.location.href = "./../html/menu.html";
 });

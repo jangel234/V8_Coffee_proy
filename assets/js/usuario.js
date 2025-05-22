@@ -6,8 +6,7 @@ const newclient = document.getElementById('newClient');
 //Busqueda
 cadenaBusqueda.addEventListener('input', async function () {
     let nombre = cadenaBusqueda.value;
-
-    console.log(nombre);
+    
     try {
         const response = await fetch('http://localhost:3000/clients', {
             method: 'POST',
@@ -22,19 +21,8 @@ cadenaBusqueda.addEventListener('input', async function () {
 
         console.log(data);
 
-        //creacion de la lista de clientes
-
         // Limpiar la lista actual
         listaClientes.innerHTML = '';
-
-        // Verificar que haya resultados
-        if (data.length === 0) {
-            const li = document.createElement('li');
-            li.style.listStyleType = 'none';
-            li.textContent = 'No se encontraron clientes.';
-            listaClientes.appendChild(li);
-            return;
-        }
 
         // Agregar cada cliente a la lista
         data.clients.forEach(cliente => {
@@ -67,11 +55,13 @@ btnGuardar.addEventListener('click', async function () {
     let nombre = nombreUsuario;
     let telefono = telUsuario;
 
-    console.log(nombre)
-    console.log(telefono)
-
     if (!nombre || !telefono) {
         alert('Todos los campos son necesarios');
+        return;
+    }
+
+    if(telefono.length < 10){
+        alert("El número telefonico debe ser de 10 dígitos");
         return;
     }
 
@@ -85,6 +75,8 @@ btnGuardar.addEventListener('click', async function () {
         let res = await response.json();
 
         console.log(res);
+
+        alert("Cliente agregado exitosamente");
     } catch (error) {
         //alert(error.message);
     }
@@ -101,4 +93,4 @@ window.addEventListener('load', function () {
 
 newclient.addEventListener('click', function () {
     document.getElementById('register').style.display = "block";
-})
+});

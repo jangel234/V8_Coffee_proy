@@ -1,5 +1,6 @@
 window.addEventListener('load', function () {
     localStorage.removeItem('idCajero');
+    localStorage.removeItem('P');
 });
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -23,6 +24,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (!response.ok) throw new Error(data.error || 'Error en el login');
+
+        localStorage.setItem('idCajero', data.user.id_Empleado);
 
         if (data.user.rol === 'Barista') {
             // Aqui va a donde se dirigira si es barista

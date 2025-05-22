@@ -101,3 +101,97 @@ INSERT INTO Productos (nombre, procedimientos, tamanio, HC, precio) VALUES
 ('Galleta de Avena', 'Galleta de avena con pasas', 'Postre', 0, 10.00),
 ('Galleta de Chocolate', 'Galleta de chocolate con nuez', 'Postre', 0, 15.00),
 ('Brownie', 'Brownie de chocolate con nuez', 'Postre', 0, 25.00);
+
+-- Simulación de pedidos realizados en distintos días de mayo de 2025
+INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado)
+VALUES 
+('2025-05-01 10:30:00', 1, 4),
+('2025-05-01 11:00:00', 2, 4),
+('2025-05-02 09:45:00', 3, 4),
+('2025-05-03 14:20:00', 4, 4),
+('2025-05-03 15:10:00', 5, 4),
+('2025-05-04 12:05:00', 6, 4),
+('2025-05-04 13:55:00', 7, 4),
+('2025-05-05 08:30:00', 8, 4),
+('2025-05-05 09:00:00', 9, 4),
+('2025-05-05 10:30:00', 1, 4);
+
+-- Relación pedidos-productos
+INSERT INTO PP (id_Producto, id_Pedido) VALUES
+(1,1),(2,1),(3,2),(1,3),(4,4),(1,5),(1,6),(1,7),(5,8),(1,9),(1,10);
+
+-- Pedidos prueba para la vista de venta por producto
+INSERT INTO Pedidos (Fecha, id_Cliente, id_Empleado)
+VALUES 
+('2025-05-06 09:10:00', 2, 4),
+('2025-05-06 10:30:00', 3, 4);
+
+INSERT INTO PP (id_Producto, id_Pedido) VALUES
+(3,11),(4,11),(2,12),(2,12),(2,12);
+
+
+CREATE OR REPLACE VIEW ventas_por_mes AS
+SELECT 
+    DATE_FORMAT(Fecha, '%Y-%m') AS mes,
+    SUM(total) AS total_ventas
+FROM Pedidos
+GROUP BY mes;
+
+CREATE OR REPLACE VIEW promedio_diario_por_mes AS
+SELECT 
+    DATE_FORMAT(Fecha, '%Y-%m') AS mes,
+    COUNT(DISTINCT DATE(Fecha)) AS dias_con_ventas,
+    SUM(total) / COUNT(DISTINCT DATE(Fecha)) AS promedio_diario
+FROM Pedidos
+GROUP BY mes;
+
+CREATE OR REPLACE VIEW producto_mas_vendido_mes AS
+SELECT 
+    mes,
+    nombre_producto,
+    cantidad
+FROM (
+    SELECT 
+        DATE_FORMAT(p.Fecha, '%Y-%m') AS mes,
+        pr.nombre AS nombre_producto,
+        COUNT(*) AS cantidad,
+        RANK() OVER (PARTITION BY DATE_FORMAT(p.Fecha, '%Y-%m') ORDER BY COUNT(*) DESC) AS rnk
+    FROM PP
+    JOIN Pedidos p ON p.id = PP.id_Pedido
+    JOIN Productos pr ON pr.id = PP.id_Producto
+    GROUP BY mes, pr.nombre
+) ranked
+WHERE rnk = 1;
+
+
+CREATE OR REPLACE VIEW mejor_dia_venta_mes AS
+SELECT 
+    mes,
+    dia,
+    total_dia
+FROM (
+    SELECT 
+        DATE_FORMAT(Fecha, '%Y-%m') AS mes,
+        DATE(Fecha) AS dia,
+        SUM(total) AS total_dia,
+        RANK() OVER (PARTITION BY DATE_FORMAT(Fecha, '%Y-%m') ORDER BY SUM(total) DESC) AS rnk
+    FROM Pedidos
+    GROUP BY mes, dia
+) ranked
+WHERE rnk = 1;
+
+CREATE OR REPLACE VIEW ventas_por_producto AS
+SELECT 
+    p.nombre AS producto,
+    CASE 
+        WHEN p.tamanio = 'Postre' THEN 'Postre'
+        WHEN p.HC = 1 THEN 'Bebidas Calientes'
+        WHEN p.HC = 0 THEN 'Bebidas Frías'
+        ELSE 'Otro'
+    END AS categoria,
+    COUNT(pp.id) AS cantidad_vendida,
+    p.precio,
+    COUNT(pp.id) * p.precio AS total
+FROM PP pp
+JOIN Productos p ON pp.id_Producto = p.id
+GROUP BY producto, categoria, p.precio;
