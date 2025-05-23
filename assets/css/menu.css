@@ -1,38 +1,8 @@
-/* menu.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #FFF5E1;
-  color: #6B4423;
-  margin: 0;
-  padding: 0;
-  background-image: url(./imgs/wallpaper-6380532_1280.webp);
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.site-header {
-  background-color: #6B4423;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.site-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 1rem;
-}
-
 .hero {
-  height: 16rem;
-  background-image: url('https://source.unsplash.com/1600x900/?coffee-shop');
-  background-size: cover;
-  background-position: center;
+  background: url('./../img/coffee-banner.jpg');
+  height: 280px;
+  position: relative;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,13 +10,19 @@ body {
 }
 
 .hero-title {
-  color: white;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: bold;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .main {
@@ -58,55 +34,39 @@ body {
 .categorias {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin: -3rem 0 1rem;
 }
 
-.btn-calientes {
-  padding: 0.5rem 1.5rem;
-  background-color: #D2691E;
+.btn-calientes, .btn-frias, .btn-postre {
+  background-color: #6B4423;
   color: white;
   border: none;
-  border-radius: 9999px;
-  cursor: pointer;
-}
-
-.btn-frias {
-  padding: 0.5rem 1.5rem;
-  background-color: #D2691E;
-  color: white;
-  border: none;
-  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 .btn-calientes:hover,
-.btn-frias:hover {
-  transform: scale(1.05);
-  background-color: #8B4513;
-}
-
-.btn-postre {
-  padding: 0.5rem 1.5rem;
-  background-color: #D2691E;
-  color: white;
-  border: none;
-  border-radius: 9999px;
-  cursor: pointer;
-}
-
-.btn-calientes:hover,
+.btn-frias:hover,
 .btn-postre:hover {
+  background-color: #ff6f00;
   transform: scale(1.05);
-  background-color: #8B4513;
 }
 
-
+.btn-categoria-activa {
+  background-color: #ff6f00 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
 
 .grid-bebidas {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+   margin-bottom: 6rem;
 }
 
 @media (min-width: 640px) {
@@ -127,20 +87,47 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 380px;
+  min-height: 340px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
-.card-img {
-  width: 100%;
-  height: 12rem;
-  object-fit: cover;
+.card img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+  margin: 1rem auto;
+  background-color: #fff8f0;
+  padding: 9px;
+  box-shadow: 0 3px 8px rgba(107, 68, 35, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.card img.card-image-dessert {
+  border: 9px solid #fff8f0;
+  background-color: #1C3B32;
+  padding: 0;
+}
+
+.card img:hover { 
+  transform: scale(1.05);
 }
 
 .card-content {
-  padding: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .card-content h3 {
@@ -152,6 +139,7 @@ body {
 .card-content p {
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .btn-seleccionar {
@@ -162,10 +150,11 @@ body {
   border: none;
   border-radius: 9999px;
   text-decoration: none;
+  text-align: center;
 }
 
-.footer {
-  text-align: center;
-  font-size: 0.875rem;
-  padding: 1rem;
+.btn-seleccionar:hover {
+  transform: scale(1.1);
+  background-color: #ff6f00;
+  transition: transform 0.3s ease;
 }

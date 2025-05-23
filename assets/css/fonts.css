@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'SoDo Sans';
+  src: url('fonts/SoDoSans-Regular.woff2') format('woff2'),
+       url('fonts/SoDoSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lander';
+  src: url('fonts/Lander-Regular.woff2') format('woff2'),
+       url('fonts/Lander-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pike';
+  src: url('fonts/Pike-Regular.woff2') format('woff2'),
+       url('fonts/Pike-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Ejemplo de uso */
+body {
+  font-family: 'SoDo Sans', sans-serif;
+}
+
+html, body {
+  overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
+  background-color: #FFF5E1;
+  color: #6B4423;
+  background-image: url(./imgs/wallpaper-6380532_1280.webp);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.site-footer {
+  position: fixed;
+  font-size: 1rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #6B4423;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  z-index: 1000;
+  font-weight: normal;
+}
+
+/*nav global*/
+
+/* NAVBAR GLOBAL */
+.navbar-custom {
+  background-color: #6B4423;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* LOGO */
+.navbar-brand img {
+  height: 74px;
+  width: 74px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff7300;
+  padding: 4px;
+  background-color: #ff8826;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
+
+/* LINKS */
+.nav-link {
+  color: #ffffff !important;
+  font-family: 'SoDo Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ff6f00;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff6f00 !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #ff6f00 !important;
+  font-weight: bold;
+}
+
+.container-fluid {
+  max-width: 1200px;
+}
+

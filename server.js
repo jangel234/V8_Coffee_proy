@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
   //password: 'angxd.com', // angel
-   password: 'Uwuntuserver1', // ian
+   password: '12345', // ian
   // password: 'soygay23', // cesarin
   // password: null, // pollo
   database: 'V8Coffee' // name of your database

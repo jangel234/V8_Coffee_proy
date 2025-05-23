@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>v8ocho – Menú</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./../css/menu.css">
-</head>
-<body class="menu-page">
-  <header class="site-header">
-    <h1 class="site-header__title">v8ocho Café</h1>
-    <nav class="site-nav">
-      <a href="usuario.html" class="site-nav__link">Clientes</a>
-      <a href="menu.html" class="site-nav__link site-nav__link--active">Menú</a>
-      <a href="../../index.html" class="site-nav__link">Admin</a>
-    </nav>
-  </header>
 
-  <div class="hero" id="hero_div">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./../../assets/css/menu.css" />
+  <link rel="stylesheet" href="./../../assets/css/fonts.css">
+</head>
+
+<body class="menu-page d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid justify-content-between align-items-center">
+
+    <div class="d-flex align-items-center">
+    <a class="navbar-brand mx-auto" href="menu.html"><img src="./../css/imgs/freepik__an-emblemstyle-logo-for-cafe-vocho-resembling-star__72321.jpeg" alt="Logo v8ocho">
+      </a>
+    </div>
+    
+    <div class="d-flex align-items-center">
+      <a class="nav-link" href="usuario.html">Clientes</a>
+      <a class="nav-link active" href="menu.html">Menú</a>
+      <a class="nav-link" href="../../index.html">Admin</a>
+    </div>
+  </div>
+</nav>
+  
+  <div class="hero d-flex justify-content-center align-items-center mb-3">
+    <div id="hero_div" class="hero-overlay text-center text-white">
+      <!-- JS insertará contenido personalizado aquí -->
+    </div>
   </div>
 
-  <main class="main-content">
-    <div class="categorias">
+  <!-- MAIN -->
+  <main class="main-content container flex-grow-1">
+    <!-- CATEGORÍAS -->
+    <div class="categorias d-flex justify-content-center flex-wrap gap-3 mb-4">
       <button id="btnCalientes" class="btn-calientes">Calientes</button>
       <button id="btnFrias" class="btn-frias">Frías</button>
       <button id="btnPostre" class="btn-postre">Postres</button>
     </div>
-    
-    <div class="grid-bebidas" id="gridBebidas"></div>
 
+    <!-- BEBIDAS -->
+    <div class="grid-bebidas row" id="gridBebidas">
+      <!-- Las tarjetas de bebidas se insertan dinámicamente -->
+    </div>
   </main>
 
-  <footer class="site-footer">© 2025 v8ocho Café</footer>
+  <!-- FOOTER sticky -->
+  <footer class="site-footer text-center mt-3 py-4 text-white" style="background-color: #6B4423;">
+    © 2025 v8ocho Café
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Tu JS -->
   <script src="./../js/menu.js"></script>
 </body>
 </html>

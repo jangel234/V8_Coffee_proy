@@ -94,3 +94,19 @@ window.addEventListener('load', function () {
 newclient.addEventListener('click', function () {
     document.getElementById('register').style.display = "block";
 });
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const currentPath = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href').split('/').pop();
+      if (href === currentPath) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  });
