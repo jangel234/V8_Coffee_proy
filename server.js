@@ -11,10 +11,10 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  //password: 'angxd.com', // angel
-  // password: '12345', // ian
+  password: 'angxd.com', // angel
+   //password: '12345', // ian
   // password: 'soygay23', // cesarin
-   password: null, // pollo
+  // password: null, // pollo
   database: 'V8Coffee' // name of your database
 });
 
@@ -241,35 +241,27 @@ app.post('/getTotal', (req, res) => {
     });
 });
 
-app.get('/getPedido', (req, res) => {
-  const query = `
-    SELECT 
-	PP.id AS id_Pedido,
-    C.nombre AS Cliente,
-    P.nombre AS Bebida,
-    P.tamanio AS Tamaño,
-    PP.extras AS Extras,
-    CASE 
-        WHEN PP.estado = 0 THEN 'En espera'
-        WHEN PP.estado = 1 THEN 'Completado'
-    END AS Estado
-FROM PP
-INNER JOIN Pedidos Pe ON PP.id_Pedido = Pe.id
-INNER JOIN Clientes C ON Pe.id_Cliente = C.id
-INNER JOIN Productos P ON PP.id_Producto = P.id
-WHERE PP.estado = 0
-ORDER BY Pe.Fecha ASC;
-  `;
+app.post('/getPedido', async (req, res) => {
+  const { idPedido } = req.body;
+  try {
 
-  connection.query(query, (error, results) => {
-    if (error) {
-      res.status(500).json({ error: error.message });
-      return;
-    }
-    res.json(results);
-  });
+    // Obtener datos del pedido
+    connection.query('SELECT P.id AS id_producto, P.nombre, P.precio, PP.extras, PP.estado FROM PP INNER JOIN Productos P ON PP.id_Producto = P.id WHERE PP.id_Pedido = ?',
+      [idPedido],
+      (error, results) => {
+        if (error) {
+          //error
+          res.status(500).json({ error: error.message });
+          return;
+        }
+        // resultados en formato json
+        res.json(results);
+      });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
-
 
 
 ///Aqui empiezan las vistas
