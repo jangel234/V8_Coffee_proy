@@ -37,4 +37,5 @@ async function initPago() {
     localStorage.setItem('mPago', selected.value);
     window.location.href = "./../html/ticket.html";
   });
+  console.log(localStorage);
 }

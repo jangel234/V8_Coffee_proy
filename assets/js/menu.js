@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-content">
               <h3>${producto.nombre} - ${producto.tamanio}</h3>
               <p>${producto.procedimientos}</p>
+              <p>Precio: $${producto.precio}</p>
               <a href="extras.html?drink=${encodeURIComponent(producto.nombre)}" class="btn-seleccionar" onClick="selectedProd(${producto.id})">Seleccionar</a>
             </div>
           `;
