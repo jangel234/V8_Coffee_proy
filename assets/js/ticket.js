@@ -1,8 +1,14 @@
 window.addEventListener('load', async function () {
     const total = document.getElementById('total');
     const pedido = document.getElementById('pedido');
+    const mPag = document.getElementById('mPago');
+
     let idPedido = JSON.parse(localStorage.getItem('A'));
+    let mpay = localStorage.getItem('mPago'); 
+
     pedido.textContent = 'Pedido #' + idPedido;
+    mPag.textContent = mpay;
+
     try {
 
         const response = await fetch('http://localhost:3000/getTotal', {

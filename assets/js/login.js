@@ -1,6 +1,5 @@
 window.addEventListener('load', function () {
-    localStorage.removeItem('idCajero');
-    localStorage.removeItem('P');
+    localStorage.clear();
 });
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {

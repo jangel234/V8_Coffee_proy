@@ -1,11 +1,17 @@
 document.getElementById('continue').addEventListener('click', async () => {
-    console.log('continuar');
+    //console.log('continuar');
     let pedido = localStorage.getItem('P');
     if (pedido) {
         try {
             let producto = localStorage.getItem('idProd');
             let pedido = localStorage.getItem('P');
-            let extras = 'Extras aqui';
+            let extrass = document.querySelectorAll('#chk');
+            let extras = '';
+            extrass.forEach(element => {
+                if (element.checked) {
+                    extras = extras + (element.value) + ' | ';
+                }
+            });
             const response = await fetch('http://localhost:3000/newPP', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -37,7 +43,13 @@ document.getElementById('continue').addEventListener('click', async () => {
         try {
             let producto = localStorage.getItem('idProd');
             let pedido = localStorage.getItem('P');
-            let extras = 'Extras aqui';
+            let extrass = document.querySelectorAll('#chk');
+            let extras = '';
+            extrass.forEach(element => {
+                if (element.checked) {
+                    extras = extras + (element.value) + ' | ';
+                }
+            });
             const response = await fetch('http://localhost:3000/newPP', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -62,7 +74,13 @@ document.getElementById('addOther').addEventListener('click', async () => {
         try {
             let producto = localStorage.getItem('idProd');
             let pedido = localStorage.getItem('P');
-            let extras = 'Extras aqui';
+            let extrass = document.querySelectorAll('#chk');
+            let extras = '';
+            extrass.forEach(element => {
+                if (element.checked) {
+                    extras = extras + (element.value) + ' | ';
+                }
+            });
             const response = await fetch('http://localhost:3000/newPP', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -94,7 +112,13 @@ document.getElementById('addOther').addEventListener('click', async () => {
         try {
             let producto = localStorage.getItem('idProd');
             let pedido = localStorage.getItem('P');
-            let extras = 'Extras aqui';
+            let extrass = document.querySelectorAll('#chk');
+            let extras = '';
+            extrass.forEach(element => {
+                if (element.checked) {
+                    extras = extras + ' | ' + (element.value);
+                }
+            });
             const response = await fetch('http://localhost:3000/newPP', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
