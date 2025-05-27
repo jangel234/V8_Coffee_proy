@@ -26,26 +26,24 @@
       <fieldset class="fieldset">
         <h2 id="tittle" class="fieldset__title">Cargando pago...</h2>
 
-        <label class="option" for="paymentTarjeta">
+        <label class="option" for="paymentTarjeta" onclick="mPago('Tarjeta')">
           <input type="radio" name="payment" value="tarjeta" id="paymentTarjeta">
           <i class="bi bi-credit-card"></i>
           Tarjeta de crédito
         </label>
 
-        <label class="option" for="paymentEfectivo">
+        <label class="option" for="paymentEfectivo" onclick="mPago('Efectivo')">
           <input type="radio" name="payment" value="efectivo" id="paymentEfectivo">
           <i class="bi bi-cash-stack"></i>
           Efectivo
         </label>
 
-        <label class="option" for="paymentPaypal">
+        <label class="option" for="paymentPaypal" onclick="mPago('PayPal')">
           <input type="radio" name="payment" value="paypal" id="paymentPaypal">
           <i class="bi bi-paypal"></i>
           PayPal
         </label>
       </fieldset>
-
-      <a class="btn btn--primary btn--block" id="btnCont">Continuar</a>
     </form>
   </main>
 

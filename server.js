@@ -11,10 +11,10 @@ app.use(express.json()); // Permite recibir JSON
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root', // your user
-  // password: 'angxd.com', // angel
-   //password: '12345', // ian
+  password: 'angxd.com', // angel
+  //password: '12345', // ian
   // password: 'soygay23', // cesarin
-   password: null, // pollo
+  // password: null, // pollo
   database: 'V8Coffee' // name of your database
 });
 
@@ -241,7 +241,28 @@ app.post('/getTotal', (req, res) => {
     });
 });
 
-app.get('/getPedido', (req, res) => {
+app.post('/getPedido', async (req, res) => {
+  const { idPedido } = req.body;
+  try {
+    // Obtener datos del pedido
+    connection.query('SELECT P.id AS id_producto, P.nombre, P.precio, PP.extras, PP.estado FROM PP INNER JOIN Productos P ON PP.id_Producto = P.id WHERE PP.id_Pedido = ?',
+      [idPedido],
+      (error, results) => {
+        if (error) {
+          //error
+          res.status(500).json({ error: error.message });
+          return;
+        }
+        // resultados en formato json
+        res.json(results);
+      });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+app.get('/getOrders', (req, res) => {
   const query = `
     SELECT 
 	PP.id AS id_Pedido,
@@ -270,6 +291,19 @@ ORDER BY Pe.Fecha ASC;
   });
 });
 
+app.post('/changeSt', (req, res) => {
+  const { st, id } = req.body;
+  connection.query(
+    'UPDATE PP SET estado = ? WHERE id = ?',
+    [st, id],
+    (error, results) => {
+      if (error) {
+        res.status(500).json({ error: error.message });
+        return;
+      }
+      res.json(results);
+    });
+});
 
 ///Aqui empiezan las vistas
 

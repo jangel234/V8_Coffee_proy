@@ -117,6 +117,8 @@ document.getElementById('addOther').addEventListener('click', async () => {
             extrass.forEach(element => {
                 if (element.checked) {
                     extras = extras + ' | ' + (element.value);
+                } else {
+                    extras = 'N/A';
                 }
             });
             const response = await fetch('http://localhost:3000/newPP', {

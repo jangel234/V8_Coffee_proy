@@ -27,15 +27,9 @@ async function initPago() {
       title.textContent = `${name} paga: $${total}, con: ${radio.value}`;
     });
   });
+}
 
-  document.getElementById('btnCont').addEventListener('click', () => {
-    const selected = document.querySelector('input[name="payment"]:checked');
-    if (!selected) {
-      alert('Por favor, selecciona un método de pago.');
-      return;
-    }
-    localStorage.setItem('mPago', selected.value);
-    window.location.href = "./../html/ticket.html";
-  });
-  console.log(localStorage);
+function mPago(mp) {
+  localStorage.setItem('mPago', mp);
+  window.location.href = "./../html/ticket.html";
 }
